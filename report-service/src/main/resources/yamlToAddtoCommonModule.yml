@@ -1,0 +1,76 @@
+/reports:
+  get:
+    summary: List all reports
+    operationId: getAllReports
+    responses:
+      '200':
+        description: A list of reports
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Report'
+  post:
+    summary: Create a new report
+    operationId: createReport
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Report'
+    responses:
+      '201':
+        description: Report created
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Report'
+  /reports/{reportId}:
+    get:
+      summary: Get a report by ID
+      operationId: getReportById
+      parameters:
+        - name: reportId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A report
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Report'
+    delete:
+      summary: Delete a report by ID
+      operationId: deleteReport
+      parameters:
+        - name: reportId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Report deleted
+
+components:
+  schemas:
+    Report:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        type:
+          type: string
+        content:
+          type: string
+      required:
+        - name
+        - type
+        - content
