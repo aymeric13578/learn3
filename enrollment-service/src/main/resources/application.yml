@@ -1,0 +1,54 @@
+server:
+  port: 8081
+
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  h2:
+    console:
+      enabled: true
+
+kafka:
+  bootstrap-servers: localhost:9092
+
+# Add additional configuration properties as needed
+#Add enrollment-service as a dependency in other modules (e.g., api-gateway, bff-service).
+#
+#In pom.xml of other modules:
+#<dependency>
+#    <groupId>com.example</groupId>
+#    <artifactId>enrollment-service</artifactId>
+#    <version>${project.version}</version>
+#</dependency>
+#Use Feign clients or RestTemplate in other modules to interact with enrollment-service endpoints.
+#
+#Example Feign client in bff-service:
+#
+#java
+#Copy code
+#@FeignClient(name = "enrollment-service")
+#public interface EnrollmentClient {
+#    @PostMapping("/enrollments")
+#    Enrollment enrollUser(@RequestBody Enrollment enrollment);
+#}
+
+
+
+#Example usage in a service:
+#
+#java
+#Copy code
+#@Service
+#public class CourseService {
+#    @Autowired
+#    private EnrollmentClient enrollmentClient;
+#
+#    public void enrollUser(Enrollment enrollment) {
+#        enrollmentClient.enrollUser(enrollment);
+#    }
+#}
+
+#Register the enrollment-service module with the service-registry for service discovery.

@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: message-broker
+
+  rabbitmq:
+    #Example Configuration for a Producer Microservice:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    template:
+      exchange: myExchange
+      routing-key: myRoutingKey
+
+  cloud:
+    loadbalancer:
+      retry:
+        maxAttempts: 3
+        initialInterval: 1000
+        multiplier: 2.0
+
+server:
+  port: 8082
+
+#Ensure that other microservices are configured to communicate with the message broker. For example, they will need to connect to RabbitMQ or Kafka and publish/subscribe to the relevant queues or topics.

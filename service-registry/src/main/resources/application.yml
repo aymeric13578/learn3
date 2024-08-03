@@ -1,0 +1,23 @@
+server:
+  port: 8761
+
+eureka:
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  server:
+    enableSelfPreservation: false
+#Configure other microservices to register with Eureka
+spring:
+  application:
+    name: <service-name>
+
+:
+
+#server.port specifies the port where Eureka server will be running.
+#eureka.client.registerWithEureka and eureka.client.fetchRegistry are set to false since this is a server and does not register itself with another Eureka instance.
+#eureka.server.enableSelfPreservation is set to false for demonstration purposes; adjust according to your needs in production.
+
+#Spring Boot Actuator is included for health checks. Access health endpoints using /actuator/health on each microservice. Eureka will periodically check the health status of registered instances.

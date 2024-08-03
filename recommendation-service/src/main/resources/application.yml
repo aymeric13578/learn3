@@ -1,0 +1,18 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: recommendation-service
+          uri: lb://recommendation-service
+          predicates:
+            - Path=/recommendations/**
+#If the recommendation-service needs to consume or produce messages via Kafka, configure Kafka in the recommendation-service and update application.yml
+#spring:
+#  kafka:
+#    bootstrap-servers: localhost:9092
+#    consumer:
+#      group-id: recommendation-group
+#      auto-offset-reset: earliest
+#    producer:
+#      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+#      value-serializer: org.apache.kafka.common.serialization.StringSerializer

@@ -1,0 +1,13 @@
+#This file is used for the configuration server setup
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        vault:
+          enabled: true
+          uri: http://localhost:8200
+          token: your-vault-token
+
+#Ensure that you have HashiCorp Vault set up and running | vault server -dev

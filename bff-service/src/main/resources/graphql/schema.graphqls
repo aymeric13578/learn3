@@ -1,0 +1,9 @@
+type Query {
+    getGreeting: String
+    # Define more queries as needed
+}
+
+type Mutation {
+    createGreeting(message: String!): String
+    # Define more mutations as needed
+}

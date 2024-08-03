@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: user-service
+
+  cloud:
+    discovery:
+      client:
+        service-id: user-service
+
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: YOUR_GOOGLE_CLIENT_ID
+            client-secret: YOUR_GOOGLE_CLIENT_SECRET
+            scope: profile, email
+            redirect-uri: "{baseUrl}/login/oauth2/code/google"
+
+server:
+  port: 8081
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+#Rate Limiting: Handled via Redis as specified in the application.yml. Ensure Redis is up and running, and configure rate limits based on your requirements.
+#Load Balancing: Achieved via the lb:// URI scheme and managed by Spring Cloud Gateway and Spring Cloud Load Balancer.
+
+#Configure multiple routes in application.yml to handle different API versions. For example:
+#
+#/api/v1/users/** for version 1
+#/api/v2/users/** for version 2
+#Each route will forward requests to the corresponding microservice, allowing you to handle different API versions in a structured manner.
