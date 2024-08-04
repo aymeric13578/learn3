@@ -3,14 +3,14 @@ name: CI/CD Pipeline
 on:
   push:
     tags:
-      - '*'
+      - 'v*.*.*'
   pull_request:
     branches:
-      - main
+      - dev
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: your-dockerhub-username
+  IMAGE_NAME: ${{ github.repository }}
 
 jobs:
   build:
@@ -27,16 +27,17 @@ jobs:
           distribution: 'temurin'
 
       - name: Build with Maven
-        run: mvn clean install
+        run: mvn clean install -DskipTests=false
 
       - name: Extract Git tag
-        id: vars
+        id: extract_tag
         run: echo "GIT_TAG=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
 
       - name: Build Docker images
         run: |
           services=(config-server service-registry api-gateway bff payment-service user-service course-service recommendation-service enrollment-service review-service report-service)
           for service in "${services[@]}"; do
+            echo "Building $service..."
             docker build -t $REGISTRY/$IMAGE_NAME/$service:${{ env.GIT_TAG }} ./$service
           done
 
@@ -49,7 +50,9 @@ jobs:
 
       - name: Push Docker images to GitHub Container Registry
         run: |
+          services=(config-server service-registry api-gateway bff payment-service user-service course-service recommendation-service enrollment-service review-service report-service)
           for service in "${services[@]}"; do
+            echo "Pushing $service to GitHub Container Registry..."
             docker push $REGISTRY/$IMAGE_NAME/$service:${{ env.GIT_TAG }}
           done
 
@@ -61,7 +64,9 @@ jobs:
 
       - name: Push Docker images to Docker Hub
         run: |
+          services=(config-server service-registry api-gateway bff payment-service user-service course-service recommendation-service enrollment-service review-service report-service)
           for service in "${services[@]}"; do
+            echo "Pushing $service to Docker Hub..."
             docker push $IMAGE_NAME/$service:${{ env.GIT_TAG }}
           done
 
@@ -74,7 +79,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Extract Git tag
-        id: vars
+        id: extract_tag
         run: echo "GIT_TAG=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
 
       - name: Set up SSH
@@ -84,6 +89,7 @@ jobs:
 
       - name: Deploy to server
         run: |
+          echo "Deploying to server..."
           ssh -o StrictHostKeyChecking=no user@your-server << EOF
             cd /home/user/elearn
             sed -i "s/:latest/:${{ env.GIT_TAG }}/g" docker-compose.yml
