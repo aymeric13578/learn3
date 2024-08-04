@@ -1,5 +1,7 @@
 package com.example.enrollment_service.model;
 
+import java.time.LocalDateTime;
+
 @Entity
 public class Enrollment {
     @Id
@@ -7,7 +9,9 @@ public class Enrollment {
     private Long id;
     private String userId;
     private String courseId;
-    private String enrollmentDate;
+    private LocalDateTime enrollmentDate;
+
+    private Integer progress;
 
     // Getters and Setters
 }

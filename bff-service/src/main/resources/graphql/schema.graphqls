@@ -1,9 +1,121 @@
 type Query {
-    getGreeting: String
-    # Define more queries as needed
+  user(id: ID!): User
+  course(id: ID!): Course
+  enrollments(userId: ID!): [Enrollment]
+  reviews(courseId: ID!): [Review]
+  recommendations(userId: ID!): [Recommendation]
 }
 
 type Mutation {
-    createGreeting(message: String!): String
-    # Define more mutations as needed
+  createUser(input: CreateUserInput): User
+  updateUser(id: ID!, input: UpdateUserInput): User
+  createCourse(input: CreateCourseInput): Course
+  enrollUser(input: EnrollUserInput): Enrollment
+  addReview(input: AddReviewInput): Review
+  processPayment(input: ProcessPaymentInput): Payment
 }
+
+type User {
+  id: ID!
+  username: String!
+  email: String!
+  firstName: String!
+  lastName: String!
+  roles: [Role]
+}
+
+type Course {
+  id: ID!
+  title: String!
+  description: String!
+  instructorId: ID!
+  price: Float!
+  modules: [Module]
+}
+
+type Enrollment {
+  id: ID!
+  userId: ID!
+  courseId: ID!
+  enrollmentDate: String!
+  progress: Int!
+}
+
+type Review {
+  id: ID!
+  userId: ID!
+  courseId: ID!
+  rating: Int!
+  comment: String!
+  createdAt: String!
+}
+
+type Recommendation {
+  id: ID!
+  userId: ID!
+  courseId: ID!
+  recommendedOn: String!
+}
+
+type Payment {
+  id: ID!
+  userId: ID!
+  courseId: ID!
+  amount: Float!
+  status: String!
+  transactionId: String!
+  paymentDate: String!
+}
+
+type Role {
+  id: ID!
+  name: String!
+}
+
+type Module {
+  id: ID!
+  courseId: ID!
+  title: String!
+  content: String!
+  order: Int!
+}
+
+input CreateUserInput {
+  username: String!
+  email: String!
+  password: String!
+  firstName: String!
+  lastName: String!
+}
+
+input UpdateUserInput {
+  email: String
+  firstName: String
+  lastName: String
+}
+
+input CreateCourseInput {
+  title: String!
+  description: String!
+  instructorId: ID!
+  price: Float!
+}
+
+input EnrollUserInput {
+  userId: ID!
+  courseId: ID!
+}
+
+input AddReviewInput {
+  userId: ID!
+  courseId: ID!
+  rating: Int!
+  comment: String!
+}
+
+input ProcessPaymentInput {
+  userId: ID!
+  courseId: ID!
+  amount: Float!
+}
+
