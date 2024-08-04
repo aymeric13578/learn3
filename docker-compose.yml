@@ -12,13 +12,13 @@ services:
     depends_on:
       - alertmanager
 
-    alertmanager:
-      image: prom/alertmanager:v0.24.0
-      container_name: alertmanager
-      volumes:
-        - ./alertmanager.yml:/etc/alertmanager/alertmanager.yml
-      ports:
-        - "9093:9093"
+  alertmanager:
+    image: prom/alertmanager:v0.24.0
+    container_name: alertmanager
+    volumes:
+      - ./alertmanager.yml:/etc/alertmanager/alertmanager.yml
+    ports:
+      - "9093:9093"
 
   config-server:
     image: your-dockerhub-username/config-server:latest
@@ -63,6 +63,8 @@ services:
       - "8081:8081"
     depends_on:
       - api-gateway
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-payment:5432/payment-service
 
   user-service:
     image: your-dockerhub-username/user-service:${GIT_TAG}
@@ -71,6 +73,8 @@ services:
       - "8082:8082"
     depends_on:
       - api-gateway
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-user:5432/user-service
 
   course-service:
     image: your-dockerhub-username/course-service:${GIT_TAG}
@@ -79,6 +83,8 @@ services:
       - "8083:8083"
     depends_on:
       - api-gateway
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-course:5432/course-service
 
   recommendation-service:
     image: your-dockerhub-username/recommendation-service:${GIT_TAG}
@@ -87,6 +93,8 @@ services:
       - "8084:8084"
     depends_on:
       - api-gateway
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-recommendation:5432/recommendation-service
 
   enrollment-service:
     image: your-dockerhub-username/enrollment-service:${GIT_TAG}
@@ -95,6 +103,8 @@ services:
       - "8085:8085"
     depends_on:
       - api-gateway
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-enrollment:5432/enrollment-service
 
   review-service:
     image: your-dockerhub-username/review-service:${GIT_TAG}
@@ -103,6 +113,8 @@ services:
       - "8086:8086"
     depends_on:
       - api-gateway
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-review:5432/review-service
 
   report-service:
     image: your-dockerhub-username/report-service:${GIT_TAG}
@@ -111,6 +123,8 @@ services:
       - "8087:8087"
     depends_on:
       - api-gateway
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-report:5432/report-service
 
   rabbitmq:
     image: "rabbitmq:management"
@@ -129,3 +143,96 @@ services:
       VAULT_DEV_LISTEN_ADDRESS: 0.0.0.0:8200
     cap_add:
       - IPC_LOCK
+
+  postgres-payment:
+    image: postgres:13
+    container_name: postgres-payment
+    environment:
+      POSTGRES_DB: payment-service
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - postgres-payment-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  postgres-user:
+    image: postgres:13
+    container_name: postgres-user
+    environment:
+      POSTGRES_DB: user-service
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - postgres-user-data:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+
+  postgres-course:
+    image: postgres:13
+    container_name: postgres-course
+    environment:
+      POSTGRES_DB: course-service
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - postgres-course-data:/var/lib/postgresql/data
+    ports:
+      - "5434:5432"
+
+  postgres-recommendation:
+    image: postgres:13
+    container_name: postgres-recommendation
+    environment:
+      POSTGRES_DB: recommendation-service
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - postgres-recommendation-data:/var/lib/postgresql/data
+    ports:
+      - "5435:5432"
+
+  postgres-enrollment:
+    image: postgres:13
+    container_name: postgres-enrollment
+    environment:
+      POSTGRES_DB: enrollment-service
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - postgres-enrollment-data:/var/lib/postgresql/data
+    ports:
+      - "5436:5432"
+
+  postgres-review:
+    image: postgres:13
+    container_name: postgres-review
+    environment:
+      POSTGRES_DB: review-service
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - postgres-review-data:/var/lib/postgresql/data
+    ports:
+      - "5437:5432"
+
+  postgres-report:
+    image: postgres:13
+    container_name: postgres-report
+    environment:
+      POSTGRES_DB: report-service
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - postgres-report-data:/var/lib/postgresql/data
+    ports:
+      - "5438:5432"
+
+volumes:
+  postgres-payment-data:
+  postgres-user-data:
+  postgres-course-data:
+  postgres-recommendation-data:
+  postgres-enrollment-data:
+  postgres-review-data:
+  postgres-report-data:
