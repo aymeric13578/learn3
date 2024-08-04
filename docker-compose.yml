@@ -1,6 +1,25 @@
 version: '3.8'
 
 services:
+  prometheus:
+    image: prom/prometheus:v2.35.0
+    container_name: prometheus
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./alerts.yml:/etc/prometheus/alerts.yml
+    ports:
+      - "9090:9090"
+    depends_on:
+      - alertmanager
+
+    alertmanager:
+      image: prom/alertmanager:v0.24.0
+      container_name: alertmanager
+      volumes:
+        - ./alertmanager.yml:/etc/alertmanager/alertmanager.yml
+      ports:
+        - "9093:9093"
+
   config-server:
     image: your-dockerhub-username/config-server:latest
     container_name: config-server

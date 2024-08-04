@@ -1,0 +1,89 @@
+# prometheus.yml
+
+global:
+  scrape_interval: 10s
+  evaluation_interval: 10s
+
+scrape_configs:
+  - job_name: 'config-server'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['config-server:8080']
+        labels:
+          application: 'Config Server'
+
+  - job_name: 'service-registry'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['service-registry:8080']
+        labels:
+          application: 'Service Registry'
+
+  - job_name: 'api-gateway'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['api-gateway:8080']
+        labels:
+          application: 'API Gateway'
+
+  - job_name: 'bff'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['bff:8080']
+        labels:
+          application: 'BFF'
+
+  - job_name: 'payment-service'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['payment-service:8080']
+        labels:
+          application: 'Payment Service'
+
+  - job_name: 'user-service'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['user-service:8080']
+        labels:
+          application: 'User Service'
+
+  - job_name: 'course-service'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['course-service:8080']
+        labels:
+          application: 'Course Service'
+
+  - job_name: 'recommendation-service'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['recommendation-service:8080']
+        labels:
+          application: 'Recommendation Service'
+
+  - job_name: 'enrollment-service'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['enrollment-service:8080']
+        labels:
+          application: 'Enrollment Service'
+
+  - job_name: 'review-service'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['review-service:8080']
+        labels:
+          application: 'Review Service'
+
+  - job_name: 'report-service'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['report-service:8080']
+        labels:
+          application: 'Report Service'
+
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+            - 'alertmanager:9093'

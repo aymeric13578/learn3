@@ -1,0 +1,13 @@
+# alerts.yml
+
+groups:
+  - name: example-alerts
+    rules:
+      - alert: ServiceDown
+        expr: up == 0
+        for: 5m
+        labels:
+          severity: 'critical'
+        annotations:
+          summary: 'Service {{ $labels.job }} is down'
+          description: 'The service {{ $labels.job }} has been down for more than 5 minutes.'
