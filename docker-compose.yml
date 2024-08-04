@@ -1,0 +1,112 @@
+version: '3.8'
+
+services:
+  config-server:
+    image: your-dockerhub-username/config-server:latest
+    container_name: config-server
+    ports:
+      - "8888:8888"
+    environment:
+      - SPRING_PROFILES_ACTIVE=dev
+      - VAULT_TOKEN=your-vault-token
+      - VAULT_ADDRESS=http://vault:8200
+    depends_on:
+      - vault
+
+  service-registry:
+    image: your-dockerhub-username/service-registry:latest
+    container_name: service-registry
+    ports:
+      - "8761:8761"
+    depends_on:
+      - config-server
+
+  api-gateway:
+    image: your-dockerhub-username/api-gateway:latest
+    container_name: api-gateway
+    ports:
+      - "8080:8080"
+    depends_on:
+      - service-registry
+
+  bff:
+    image: your-dockerhub-username/bff:${GIT_TAG}
+    container_name: bff
+    ports:
+      - "9090:9090"
+    depends_on:
+      - api-gateway
+
+  payment-service:
+    image: your-dockerhub-username/payment-service:${GIT_TAG}
+    container_name: payment-service
+    ports:
+      - "8081:8081"
+    depends_on:
+      - api-gateway
+
+  user-service:
+    image: your-dockerhub-username/user-service:${GIT_TAG}
+    container_name: user-service
+    ports:
+      - "8082:8082"
+    depends_on:
+      - api-gateway
+
+  course-service:
+    image: your-dockerhub-username/course-service:${GIT_TAG}
+    container_name: course-service
+    ports:
+      - "8083:8083"
+    depends_on:
+      - api-gateway
+
+  recommendation-service:
+    image: your-dockerhub-username/recommendation-service:${GIT_TAG}
+    container_name: recommendation-service
+    ports:
+      - "8084:8084"
+    depends_on:
+      - api-gateway
+
+  enrollment-service:
+    image: your-dockerhub-username/enrollment-service:${GIT_TAG}
+    container_name: enrollment-service
+    ports:
+      - "8085:8085"
+    depends_on:
+      - api-gateway
+
+  review-service:
+    image: your-dockerhub-username/review-service:${GIT_TAG}
+    container_name: review-service
+    ports:
+      - "8086:8086"
+    depends_on:
+      - api-gateway
+
+  report-service:
+    image: your-dockerhub-username/report-service:${GIT_TAG}
+    container_name: report-service
+    ports:
+      - "8087:8087"
+    depends_on:
+      - api-gateway
+
+  rabbitmq:
+    image: "rabbitmq:management"
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+  vault:
+    image: "vault:latest"
+    container_name: vault
+    ports:
+      - "8200:8200"
+    environment:
+      VAULT_DEV_ROOT_TOKEN_ID: root
+      VAULT_DEV_LISTEN_ADDRESS: 0.0.0.0:8200
+    cap_add:
+      - IPC_LOCK
