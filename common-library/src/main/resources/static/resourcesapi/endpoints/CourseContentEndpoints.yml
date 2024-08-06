@@ -237,3 +237,334 @@ paths:
                 $ref: '../responses/TooManyRequestsResponse.yml#/TooManyRequestsResponse'
         default:
           description: Unexpected error
+  /courses/{courseId}/contents:
+    post:
+      tags:
+        - Course Content Management
+      summary: Add new content to a course
+      description: Add new content to a specific course.
+      parameters:
+        - name: courseId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Content details (type, data, etc.)
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                type:
+                  type: string
+                data:
+                  type: string
+                # Add other properties as needed
+        required: true
+      responses:
+        '201':
+          description: Content added successfully
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Course not found
+        '406':
+          description: Not Acceptable
+        '429':
+          description: Too many requests
+    get:
+      tags:
+        - content
+      summary: Retrieve all contents for a course
+      description: Retrieve a list of all contents for a specific course.
+      parameters:
+        - name: courseId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of contents
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CourseContent'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Course not found
+        '406':
+          description: Not Acceptable
+        '429':
+          description: Too many requests
+  /courses/contents/{contentId}:
+    get:
+      tags:
+        - Course Content Management
+      summary: Retrieve specific content details
+      description: Retrieve details of a specific course content.
+      parameters:
+        - name: contentId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Content details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CourseContent'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Content not found
+        '406':
+          description: Not Acceptable
+        '429':
+          description: Too many requests
+
+    put:
+      tags:
+        - Course Content Management
+      summary: Update existing course content
+      description: Update content details with the provided data.
+      parameters:
+        - name: contentId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Updated content details
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                type:
+                  type: string
+                data:
+                  type: string
+                # Add other properties as needed
+        required: true
+      responses:
+        '200':
+          description: Content updated successfully
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Content not found
+        '406':
+          description: Not Acceptable
+        '429':
+          description: Too many requests
+
+    delete:
+      tags:
+        - Course Content Management
+      summary: Delete specific course content
+      description: Delete a specific content from a course.
+      parameters:
+        - name: contentId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Content deleted successfully
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Content not found
+        '406':
+          description: Not Acceptable
+        '429':
+          description: Too many requests
+
+  /courses/contents/{contentId}/videos:
+    post:
+      tags:
+        - Course Content Management
+      summary: Add a new video to course content
+      description: Add a new video to specific course content.
+      parameters:
+        - name: contentId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Video details (URL, duration, etc.)
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                url:
+                  type: string
+                duration:
+                  type: string
+                # Add other properties as needed
+        required: true
+      responses:
+        '201':
+          description: Video added successfully
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Content not found
+        '406':
+          description: Not Acceptable
+        '429':
+          description: Too many requests
+
+    get:
+      tags:
+        - Course Content Management
+      summary: Retrieve all videos for course content
+      description: Retrieve a list of all videos for specific course content.
+      parameters:
+        - name: contentId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of videos
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CourseVideo'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Content not found
+        '406':
+          description: Not Acceptable
+        '429':
+          description: Too many requests
+
+  /course-contents/{contentId}/versions:
+    post:
+      tags:
+        - Course Content Management
+      summary: Create a new version of course content
+      description: Create a new version of specific course content.
+      parameters:
+        - name: contentId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Content version details
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                version:
+                  type: string
+                details:
+                  type: string
+                # Add other properties as needed
+        required: true
+      responses:
+        '201':
+          description: Content version created successfully
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Content not found
+        '406':
+          description: Not Acceptable
+        '429':
+          description: Too many requests
+
+    get:
+      tags:
+        - Course Content Management
+      summary: Retrieve all versions of content
+      description: Retrieve all versions of specific course content.
+      parameters:
+        - name: contentId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of content versions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ContentVersion'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Content not found
+        '406':
+          description: Not Acceptable
+        '429':
+          description: Too many requests
+
+    /contents/{contentId}/versions/{versionId}/restore:
+      post:
+        tags:
+          - Course Content Management
+        summary: Restore a specific version of content
+        description: Restore a specific version of course content.
+        parameters:
+          - name: contentId
+            in: path
+            required: true
+            schema:
+              type: string
+          - name: versionId
+            in: path
+            required: true
+            schema:
+              type: string
+        responses:
+          '200':
+            description: Content version restored successfully
+          '400':
+            description: Bad request
+          '401':
+            description: Unauthorized
+          '404':
+            description: Content or version not found
+          '406':
+            description: Not Acceptable
+          '429':
+            description: Too many requests

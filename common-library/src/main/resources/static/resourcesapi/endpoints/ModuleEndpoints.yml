@@ -237,3 +237,74 @@ paths:
                 $ref: '../responses/TooManyRequestsResponse.yml#/TooManyRequestsResponse'
         default:
           description: Unexpected error
+  /courses/{courseId}/modules:
+    post:
+      tags:
+        - Module Management
+      summary: Add a new module to a course
+      description: Add a new module to a specific course.
+      parameters:
+        - name: courseId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Module details (title, content, order, etc.)
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                content:
+                  type: string
+                order:
+                  type: integer
+                # Add other properties as needed
+        required: true
+      responses:
+        '201':
+          description: Module added successfully
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Course not found
+        '406':
+          description: Not Acceptable
+        '429':
+          description: Too many requests
+
+    get:
+      tags:
+        - Module Management
+      summary: Retrieve all modules for a course
+      description: Retrieve a list of all modules for a specific course.
+      parameters:
+        - name: courseId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of modules
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CourseModule'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Course not found
+        '406':
+          description: Not Acceptable
+        '429':
+          description: Too many requests
