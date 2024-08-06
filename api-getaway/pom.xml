@@ -6,7 +6,7 @@
 		<groupId>com.example</groupId>
 		<artifactId>elearn</artifactId>
 		<version>0.1.0</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath>../pom.xml</relativePath>
 	</parent>
 
 	<artifactId>api-getaway</artifactId>

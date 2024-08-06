@@ -6,7 +6,7 @@
 		<groupId>com.example</groupId>
 		<artifactId>elearn</artifactId>
 		<version>0.1.0</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<artifactId>user-service</artifactId>
 	<name>user-service</name>
@@ -43,10 +43,13 @@
 			<artifactId>micrometer-registry-prometheus</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-actuator -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
+			<version>3.3.2</version>
 		</dependency>
+
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
@@ -59,16 +62,15 @@
 			<version>4.0.1</version>
 		</dependency>
 
-
 		<dependency>
 			<groupId>com.example</groupId>
 			<artifactId>common-library</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>0.1.0</version>
 		</dependency>
 		<dependency>
 			<groupId>com.example</groupId>
 			<artifactId>bff-service</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>0.1.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
@@ -88,12 +90,6 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-oauth2-client</artifactId>
-		</dependency>
-		<!-- 2FA Library -->
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-2fa</artifactId>
-			<version>1.0.0</version>
 		</dependency>
 		<!-- H2 Database for testing -->
 		<dependency>
@@ -117,11 +113,6 @@
 			<groupId>org.mapstruct</groupId>
 			<artifactId>mapstruct</artifactId>
 			<version>1.4.2.Final</version>
-		</dependency>
-		<dependency>
-			<groupId>com.example</groupId>
-			<artifactId>api-definitions</artifactId>
-			<version>1.0.0</version>
 		</dependency>
 	</dependencies>
 

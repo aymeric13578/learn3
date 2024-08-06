@@ -9,9 +9,8 @@
         <module name="bff-service" />
         <module name="review-service" />
         <module name="api-getaway" />
-        <module name="user-service" />
-        <module name="common-library" />
         <module name="enrollment-service" />
+        <module name="notification-service" />
         <module name="recommendation-service" />
         <module name="course-service" />
         <module name="config-server" />
@@ -20,6 +19,47 @@
         <module name="report-service" />
         <module name="service-registry" />
       </profile>
+      <profile name="Annotation profile for common-library" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.30/lombok-1.18.30.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct-processor/1.5.5.Final/mapstruct-processor-1.5.5.Final.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct/1.5.5.Final/mapstruct-1.5.5.Final.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok-mapstruct-binding/0.2.0/lombok-mapstruct-binding-0.2.0.jar" />
+        </processorPath>
+        <module name="common-library" />
+      </profile>
+      <profile name="Annotation profile for elearn" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct-processor/1.4.2.Final/mapstruct-processor-1.4.2.Final.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct/1.4.2.Final/mapstruct-1.4.2.Final.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.16/lombok-1.18.16.jar" />
+        </processorPath>
+        <module name="user-service" />
+      </profile>
     </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="api-getaway" options="-parameters" />
+      <module name="bff-service" options="-parameters" />
+      <module name="common-library" options="-parameters -Amapstruct.defaultComponentModel=spring" />
+      <module name="config-server" options="-parameters" />
+      <module name="course-service" options="-parameters" />
+      <module name="enrollment-service" options="-parameters" />
+      <module name="message-broker" options="-parameters" />
+      <module name="notification-service" options="-parameters" />
+      <module name="payment-service" options="-parameters" />
+      <module name="recommendation-service" options="-parameters" />
+      <module name="report-service" options="-parameters" />
+      <module name="review-service" options="-parameters" />
+      <module name="service-registry" options="-parameters" />
+      <module name="user-service" options="-parameters" />
+    </option>
   </component>
 </project>

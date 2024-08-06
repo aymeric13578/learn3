@@ -1,6 +1,10 @@
 package com.example.user_service.model;
 
+import jakarta.persistence.Id;
+
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.UUID;
 
 public class User {
     @Id

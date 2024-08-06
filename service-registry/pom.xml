@@ -6,7 +6,7 @@
 		<groupId>com.example</groupId>
 		<artifactId>elearn</artifactId>
 		<version>0.1.0</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath>../pom.xml</relativePath>
 	</parent>
 
 	<artifactId>service-registry</artifactId>
@@ -47,10 +47,13 @@
 		</dependency>
 
 		<!-- Spring Boot Starter Actuator for health checks -->
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-actuator -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
+			<version>3.3.2</version>
 		</dependency>
+
 
 		<dependency>
 			<groupId>io.micrometer</groupId>

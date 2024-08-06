@@ -6,7 +6,7 @@
 		<groupId>com.example</groupId>
 		<artifactId>elearn</artifactId>
 		<version>0.1.0</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath>../pom.xml</relativePath>
 	</parent>
 
 	<artifactId>recommendation-service</artifactId>
@@ -30,6 +30,24 @@
 	</properties>
 	<dependencies>
 		<dependency>
+			<groupId>com.example</groupId>
+			<artifactId>common-library</artifactId>
+			<version>0.1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.example</groupId>
+			<artifactId>user-service</artifactId>
+			<version>0.1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.example</groupId>
+			<artifactId>course-service</artifactId>
+			<version>0.1.0</version>
+		</dependency>
+
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
@@ -40,13 +58,11 @@
 		</dependency>
 
 		<!-- Machine Learning Libraries -->
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-mongodb -->
 		<dependency>
-			<groupId>org.springframework</groupId>
+			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-mongodb</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-math3</artifactId>
+			<version>3.3.2</version>
 		</dependency>
 
 		<!-- Other dependencies -->

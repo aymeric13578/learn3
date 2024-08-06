@@ -288,3 +288,5 @@ Wcourse-service/src/main/java/com/example/course_service/controller/VideoControl
 `course-service/src/main/java/com/example/course_service/controller/ContentVersionController.java,8/8/889eba5058a3daf1f53ca2d849bb415a1108d5ae
 Š
 Zcourse-service/src/main/java/com/example/course_service/service/ContentVersionService.java,3/5/35c9d0dea0e305ec51bc9e30024197fa1117d37b
+L
+notification-service/pom.xml,0/1/01f9e880c9ba9f01d23d7605950269a1f1661129
