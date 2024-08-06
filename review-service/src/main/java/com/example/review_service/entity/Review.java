@@ -5,21 +5,25 @@ import java.time.LocalDateTime;
 @Entity
 public class Review {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String content;
+    private UUID reviewId;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "course_id")
+    private Course course;
+
+    private int rating;
+    private String comment;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
+
     private String sentiment;
     private boolean isSpam;
     private boolean isApproved;
 
-    private String userId;
-    private String courseId;
-
-    private Integer rating;
-
-    private String comment;
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
 
     // Getters and setters
 }

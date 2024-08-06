@@ -1,0 +1,239 @@
+paths:
+  /users:
+    get:
+      tags:
+        - User Management
+      summary: List all users
+      description: Retrieve a list of users
+      operationId: listUsers
+      parameters:
+        - $ref: '../parameters/query/offset.yml'
+        - $ref: '../parameters/query/limit.yml'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '../models/UserListResponse.yml#/UserListResponse'
+        '400':
+          description: Bad request error
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '401':
+          description: Unauthorized request
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/UnauthorizedResponse.yml#/UnauthorizedResponse'
+        '406':
+          description: Not Acceptable
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '429':
+          description: Too many requests
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/TooManyRequestsResponse.yml#/TooManyRequestsResponse'
+        default:
+          description: Unexpected error
+    post:
+      tags:
+        - User Management
+      summary: Create user
+      description: Add a new user
+      operationId: createUser
+      requestBody:
+        description: User data to create
+        content:
+          application/json:
+            schema:
+              $ref: '../models/UserPostData.yml#/UserPostData'
+        required: true
+      responses:
+        '201':
+          description: User created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '../models/UserResponse.yml#/UserResponse'
+        '400':
+          description: Bad request error
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '401':
+          description: Unauthorized request
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/UnauthorizedResponse.yml#/UnauthorizedResponse'
+        '406':
+          description: Not Acceptable
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '429':
+          description: Too many requests
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/TooManyRequestsResponse.yml#/TooManyRequestsResponse'
+        default:
+          description: Unexpected error
+  /users/{userId}:
+    get:
+      tags:
+        - User Management
+      summary: Get user by ID
+      description: Retrieve user by its ID
+      operationId: getUserById
+      parameters:
+        - $ref: '../parameters/path/user-id.yml'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '../models/UserResponse.yml#/UserResponse'
+        '400':
+          description: Bad request error
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '401':
+          description: Unauthorized request
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/UnauthorizedResponse.yml#/UnauthorizedResponse'
+        '404':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '406':
+          description: Not Acceptable
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '429':
+          description: Too many requests
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/TooManyRequestsResponse.yml#/TooManyRequestsResponse'
+        default:
+          description: Unexpected error
+    put:
+      tags:
+        - User Management
+      summary: Update user
+      description: Update user data
+      operationId: updateUser
+      parameters:
+        - $ref: '../parameters/path/user-id.yml'
+      requestBody:
+        description: User data to be updated
+        content:
+          application/json:
+            schema:
+              $ref: '../models/UserPostData.yml#/UserPostData'
+        required: true
+      responses:
+        '200':
+          description: User updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '../models/UserResponse.yml#/UserResponse'
+        '400':
+          description: Bad request error
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '401':
+          description: Unauthorized request
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/UnauthorizedResponse.yml#/UnauthorizedResponse'
+        '404':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '406':
+          description: Not Acceptable
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '429':
+          description: Too many requests
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/TooManyRequestsResponse.yml#/TooManyRequestsResponse'
+        default:
+          description: Unexpected error
+    delete:
+      tags:
+        - User Management
+      summary: Delete user
+      description: Remove a user by its ID
+      operationId: deleteUser
+      parameters:
+        - $ref: '../parameters/path/user-id.yml'
+      responses:
+        '200':
+          description: User deleted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/MessageResultResponse.yml#/MessageResultResponse'
+        '400':
+          description: Bad request error
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '401':
+          description: Unauthorized request
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/UnauthorizedResponse.yml#/UnauthorizedResponse'
+        '404':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '406':
+          description: Not Acceptable
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '429':
+          description: Too many requests
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/TooManyRequestsResponse.yml#/TooManyRequestsResponse'
+        default:
+          description: Unexpected error

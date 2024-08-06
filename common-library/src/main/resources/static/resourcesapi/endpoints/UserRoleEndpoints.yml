@@ -1,0 +1,239 @@
+paths:
+  /user-roles:
+    get:
+      tags:
+        - User Role Management
+      summary: List all user roles
+      description: Retrieve a list of user roles
+      operationId: listUserRoles
+      parameters:
+        - $ref: '../parameters/query/offset.yml'
+        - $ref: '../parameters/query/limit.yml'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '../models/UserRoleListResponse.yml#/UserRoleListResponse'
+        '400':
+          description: Bad request error
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '401':
+          description: Unauthorized request
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/UnauthorizedResponse.yml#/UnauthorizedResponse'
+        '406':
+          description: Not Acceptable
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '429':
+          description: Too many requests
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/TooManyRequestsResponse.yml#/TooManyRequestsResponse'
+        default:
+          description: Unexpected error
+    post:
+      tags:
+        - User Role Management
+      summary: Create user role
+      description: Add a new user role
+      operationId: createUserRole
+      requestBody:
+        description: User role data to create
+        content:
+          application/json:
+            schema:
+              $ref: '../models/UserRolePostData.yml#/UserRolePostData'
+        required: true
+      responses:
+        '201':
+          description: User role created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '../models/UserRoleResponse.yml#/UserRoleResponse'
+        '400':
+          description: Bad request error
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '401':
+          description: Unauthorized request
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/UnauthorizedResponse.yml#/UnauthorizedResponse'
+        '406':
+          description: Not Acceptable
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '429':
+          description: Too many requests
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/TooManyRequestsResponse.yml#/TooManyRequestsResponse'
+        default:
+          description: Unexpected error
+  /user-roles/{userRoleId}:
+    get:
+      tags:
+        - User Role Management
+      summary: Get user role by ID
+      description: Retrieve user role by its ID
+      operationId: getUserRoleById
+      parameters:
+        - $ref: '../parameters/path/user-role-id.yml'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '../models/UserRoleResponse.yml#/UserRoleResponse'
+        '400':
+          description: Bad request error
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '401':
+          description: Unauthorized request
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/UnauthorizedResponse.yml#/UnauthorizedResponse'
+        '404':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '406':
+          description: Not Acceptable
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '429':
+          description: Too many requests
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/TooManyRequestsResponse.yml#/TooManyRequestsResponse'
+        default:
+          description: Unexpected error
+    put:
+      tags:
+        - User Role Management
+      summary: Update user role
+      description: Update user role data
+      operationId: updateUserRole
+      parameters:
+        - $ref: '../parameters/path/user-role-id.yml'
+      requestBody:
+        description: User role data to be updated
+        content:
+          application/json:
+            schema:
+              $ref: '../models/UserRolePostData.yml#/UserRolePostData'
+        required: true
+      responses:
+        '200':
+          description: User role updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '../models/UserRoleResponse.yml#/UserRoleResponse'
+        '400':
+          description: Bad request error
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '401':
+          description: Unauthorized request
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/UnauthorizedResponse.yml#/UnauthorizedResponse'
+        '404':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '406':
+          description: Not Acceptable
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '429':
+          description: Too many requests
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/TooManyRequestsResponse.yml#/TooManyRequestsResponse'
+        default:
+          description: Unexpected error
+    delete:
+      tags:
+        - User Role Management
+      summary: Delete user role
+      description: Remove a user role by its ID
+      operationId: deleteUserRole
+      parameters:
+        - $ref: '../parameters/path/user-role-id.yml'
+      responses:
+        '200':
+          description: User role deleted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/MessageResultResponse.yml#/MessageResultResponse'
+        '400':
+          description: Bad request error
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '401':
+          description: Unauthorized request
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/UnauthorizedResponse.yml#/UnauthorizedResponse'
+        '404':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '406':
+          description: Not Acceptable
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '429':
+          description: Too many requests
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/TooManyRequestsResponse.yml#/TooManyRequestsResponse'
+        default:
+          description: Unexpected error

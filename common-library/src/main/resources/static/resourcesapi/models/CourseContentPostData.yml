@@ -1,0 +1,24 @@
+CourseContentPostData:
+  type: object
+  required:
+    - title
+    - description
+    - courseId
+  properties:
+    title:
+      type: string
+      description: "Title of the course content"
+      example: "Introduction to Programming"
+    description:
+      type: string
+      description: "Detailed description of the course content"
+      example: "This section covers the basics of programming in Python."
+    courseId:
+      type: string
+      format: uuid
+      description: "The ID of the course this content belongs to"
+      example: "550e8400-e29b-41d4-a716-446655440000"
+    content:
+      type: string
+      description: "Content body"
+      example: "Content details go here."

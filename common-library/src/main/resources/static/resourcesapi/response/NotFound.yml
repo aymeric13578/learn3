@@ -1,0 +1,7 @@
+NotFoundResponse:
+  type: object
+  properties:
+    message:
+      type: string
+      description: "Resource not found"
+      example: "Resource not found"

@@ -1,0 +1,13 @@
+PaymentListResponse:
+  type: object
+  properties:
+    payments:
+      type: array
+      items:
+        $ref: 'PaymentResponse.yml#/PaymentResponse'
+    total:
+      type: integer
+      description: Total number of payments
+  required:
+    - payments
+    - total

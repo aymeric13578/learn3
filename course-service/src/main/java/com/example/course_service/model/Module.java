@@ -2,9 +2,14 @@ package com.example.course_service.model;
 
 public class Module {
 
-    private Long id;
-    private String courseId;
+    @Id
+    private UUID moduleId;
+
+    @ManyToOne
+    @JoinColumn(name = "course_id")
+    private Course course;
+
     private String title;
-    private Integer order;
     private String content;
+    private int order;
 }

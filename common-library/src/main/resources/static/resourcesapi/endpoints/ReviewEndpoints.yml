@@ -1,0 +1,82 @@
+/review:
+  get:
+    summary: Get all reviews
+    responses:
+      '200':
+        description: A list of reviews
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '../models/Review.yml'
+  post:
+    summary: Create a new review
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '../models/Review.yml'
+    responses:
+      '201':
+        description: Review created
+        content:
+          application/json:
+            schema:
+              $ref: '../models/Review.yml'
+
+/review/{reviewId}:
+  get:
+    summary: Get a review by ID
+    parameters:
+      - name: reviewId
+        in: path
+        required: true
+        schema:
+          $ref: '../models/UUID.yml'
+    responses:
+      '200':
+        description: A single review
+        content:
+          application/json:
+            schema:
+              $ref: '../models/Review.yml'
+      '404':
+        $ref: '../response/NotFound.yml'
+  put:
+    summary: Update a review by ID
+    parameters:
+      - name: reviewId
+        in: path
+        required: true
+        schema:
+          $ref: '../models/UUID.yml'
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '../models/Review.yml'
+    responses:
+      '200':
+        description: Updated review
+        content:
+          application/json:
+            schema:
+              $ref: '../models/Review.yml'
+      '404':
+        $ref: '../response/NotFound.yml'
+  delete:
+    summary: Delete a review by ID
+    parameters:
+      - name: reviewId
+        in: path
+        required: true
+        schema:
+          $ref: '../models/UUID.yml'
+    responses:
+      '204':
+        description: Review deleted
+      '404':
+        $ref: '../response/NotFound.yml'

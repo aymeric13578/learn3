@@ -1,0 +1,185 @@
+paths:
+  /waitlists:
+    get:
+      tags:
+        - Waitlist Management
+      summary: List all waitlist entries
+      description: Retrieve a list of waitlist entries
+      operationId: listWaitlists
+      parameters:
+        - $ref: '../parameters/query/offset.yml'
+        - $ref: '../parameters/query/limit.yml'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '../models/WaitlistListResponse.yml#/WaitlistListResponse'
+        '400':
+          description: Bad request error
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '401':
+          description: Unauthorized request
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/UnauthorizedResponse.yml#/UnauthorizedResponse'
+        '406':
+          description: Not Acceptable
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '429':
+          description: Too many requests
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/TooManyRequestsResponse.yml#/TooManyRequestsResponse'
+        default:
+          description: Unexpected error
+    post:
+      tags:
+        - Waitlist Management
+      summary: Add to waitlist
+      description: Add a user to the waitlist for a course
+      operationId: addToWaitlist
+      requestBody:
+        description: Waitlist entry data
+        content:
+          application/json:
+            schema:
+              $ref: '../models/WaitlistPostData.yml#/WaitlistPostData'
+        required: true
+      responses:
+        '201':
+          description: Waitlist entry created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '../models/WaitlistResponse.yml#/WaitlistResponse'
+        '400':
+          description: Bad request error
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '401':
+          description: Unauthorized request
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/UnauthorizedResponse.yml#/UnauthorizedResponse'
+        '406':
+          description: Not Acceptable
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '429':
+          description: Too many requests
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/TooManyRequestsResponse.yml#/TooManyRequestsResponse'
+        default:
+          description: Unexpected error
+  /waitlists/{waitlistId}:
+    get:
+      tags:
+        - Waitlist Management
+      summary: Get waitlist entry by ID
+      description: Retrieve a waitlist entry by its ID
+      operationId: getWaitlistById
+      parameters:
+        - $ref: '../parameters/path/waitlist-id.yml'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '../models/WaitlistResponse.yml#/WaitlistResponse'
+        '400':
+          description: Bad request error
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '401':
+          description: Unauthorized request
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/UnauthorizedResponse.yml#/UnauthorizedResponse'
+        '404':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '406':
+          description: Not Acceptable
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '429':
+          description: Too many requests
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/TooManyRequestsResponse.yml#/TooManyRequestsResponse'
+        default:
+          description: Unexpected error
+    delete:
+      tags:
+        - Waitlist Management
+      summary: Remove from waitlist
+      description: Remove a user from the waitlist
+      operationId: deleteWaitlist
+      parameters:
+        - $ref: '../parameters/path/waitlist-id.yml'
+      responses:
+        '200':
+          description: Waitlist entry deleted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/MessageResultResponse.yml#/MessageResultResponse'
+        '400':
+          description: Bad request error
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '401':
+          description: Unauthorized request
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/UnauthorizedResponse.yml#/UnauthorizedResponse'
+        '404':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '406':
+          description: Not Acceptable
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '429':
+          description: Too many requests
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/TooManyRequestsResponse.yml#/TooManyRequestsResponse'
+        default:
+          description: Unexpected error

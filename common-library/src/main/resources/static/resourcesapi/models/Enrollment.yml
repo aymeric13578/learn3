@@ -1,0 +1,18 @@
+Enrollment:
+  type: object
+  properties:
+    id:
+      $ref: './UUID.yml'
+    userId:
+      $ref: './UUID.yml'
+    courseId:
+      $ref: './UUID.yml'
+    dateEnrolled:
+      type: string
+      format: date-time
+    status:
+      type: string
+      enum:
+        - ENROLLED
+        - COMPLETED
+        - DROPPED

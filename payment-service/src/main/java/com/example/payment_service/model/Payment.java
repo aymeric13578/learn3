@@ -3,13 +3,19 @@ package com.example.payment_service.model;
 import java.time.LocalDateTime;
 
 public class Payment {
-    private String id;
+    @Id
+    private UUID paymentId;
 
-    private String userId;
-    private String courseId;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "course_id")
+    private Course course;
 
     private double amount;
     private String status;
     private String transactionId;
-    LocalDateTime paymentDate;
+    private LocalDateTime paymentDate;
 }

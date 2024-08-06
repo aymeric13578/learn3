@@ -1,0 +1,239 @@
+paths:
+  /permissions:
+    get:
+      tags:
+        - Permission Management
+      summary: List all permissions
+      description: Retrieve a list of permissions
+      operationId: listPermissions
+      parameters:
+        - $ref: '../parameters/query/offset.yml'
+        - $ref: '../parameters/query/limit.yml'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '../models/PermissionListResponse.yml#/PermissionListResponse'
+        '400':
+          description: Bad request error
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '401':
+          description: Unauthorized request
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/UnauthorizedResponse.yml#/UnauthorizedResponse'
+        '406':
+          description: Not Acceptable
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '429':
+          description: Too many requests
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/TooManyRequestsResponse.yml#/TooManyRequestsResponse'
+        default:
+          description: Unexpected error
+    post:
+      tags:
+        - Permission Management
+      summary: Create permission
+      description: Add a new permission
+      operationId: createPermission
+      requestBody:
+        description: Permission data to create
+        content:
+          application/json:
+            schema:
+              $ref: '../models/PermissionPostData.yml#/PermissionPostData'
+        required: true
+      responses:
+        '201':
+          description: Permission created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '../models/PermissionResponse.yml#/PermissionResponse'
+        '400':
+          description: Bad request error
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '401':
+          description: Unauthorized request
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/UnauthorizedResponse.yml#/UnauthorizedResponse'
+        '406':
+          description: Not Acceptable
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '429':
+          description: Too many requests
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/TooManyRequestsResponse.yml#/TooManyRequestsResponse'
+        default:
+          description: Unexpected error
+  /permissions/{permissionId}:
+    get:
+      tags:
+        - Permission Management
+      summary: Get permission by ID
+      description: Retrieve permission by its ID
+      operationId: getPermissionById
+      parameters:
+        - $ref: '../parameters/path/permission-id.yml'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '../models/PermissionResponse.yml#/PermissionResponse'
+        '400':
+          description: Bad request error
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '401':
+          description: Unauthorized request
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/UnauthorizedResponse.yml#/UnauthorizedResponse'
+        '404':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '406':
+          description: Not Acceptable
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '429':
+          description: Too many requests
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/TooManyRequestsResponse.yml#/TooManyRequestsResponse'
+        default:
+          description: Unexpected error
+    put:
+      tags:
+        - Permission Management
+      summary: Update permission
+      description: Update permission data
+      operationId: updatePermission
+      parameters:
+        - $ref: '../parameters/path/permission-id.yml'
+      requestBody:
+        description: Permission data to be updated
+        content:
+          application/json:
+            schema:
+              $ref: '../models/PermissionPostData.yml#/PermissionPostData'
+        required: true
+      responses:
+        '200':
+          description: Permission updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '../models/PermissionResponse.yml#/PermissionResponse'
+        '400':
+          description: Bad request error
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '401':
+          description: Unauthorized request
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/UnauthorizedResponse.yml#/UnauthorizedResponse'
+        '404':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '406':
+          description: Not Acceptable
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '429':
+          description: Too many requests
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/TooManyRequestsResponse.yml#/TooManyRequestsResponse'
+        default:
+          description: Unexpected error
+    delete:
+      tags:
+        - Permission Management
+      summary: Delete permission
+      description: Remove a permission by its ID
+      operationId: deletePermission
+      parameters:
+        - $ref: '../parameters/path/permission-id.yml'
+      responses:
+        '200':
+          description: Permission deleted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/MessageResultResponse.yml#/MessageResultResponse'
+        '400':
+          description: Bad request error
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '401':
+          description: Unauthorized request
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/UnauthorizedResponse.yml#/UnauthorizedResponse'
+        '404':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '406':
+          description: Not Acceptable
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '429':
+          description: Too many requests
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/TooManyRequestsResponse.yml#/TooManyRequestsResponse'
+        default:
+          description: Unexpected error

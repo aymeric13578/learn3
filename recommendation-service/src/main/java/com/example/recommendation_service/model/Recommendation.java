@@ -3,9 +3,16 @@ package com.example.recommendation_service.model;
 import java.time.LocalDateTime;
 
 public class Recommendation {
-    private String id;
+    @Id
+    private UUID recommendationId;
 
-    private String userId;
-    private String courseId;
-    LocalDateTime recommendedOn;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "course_id")
+    private Course course;
+
+    private LocalDateTime recommendedOn;
 }

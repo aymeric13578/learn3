@@ -6,29 +6,41 @@ public class CourseService {
     @Autowired
     private CourseRepository courseRepository;
 
-    public Course createCourse(Course course) {
+    public Course createOrUpdateCourse(Course course) {
         return courseRepository.save(course);
     }
 
-    public Course getCourseById(Long id) {
-        Optional<Course> course = courseRepository.findById(id);
-        return course.orElse(null);
+    public Optional<Course> getCourseById(UUID courseId) {
+        return courseRepository.findById(courseId);
     }
 
-    public List<Course> searchCourses(String keyword, String category) {
-        // Implement search and filter logic
-        return courseRepository.findAll(); // Replace with actual search logic
+    public List<Course> getAllCourses() {
+        return courseRepository.findAll();
     }
 
-    public Course updateCourse(Long id, Course course) {
-        if (courseRepository.existsById(id)) {
-            course.setId(id);
-            return courseRepository.save(course);
-        }
-        return null;
+    public void deleteCourse(UUID courseId) {
+        courseRepository.deleteById(courseId);
     }
 
-    public void deleteCourse(Long id) {
-        courseRepository.deleteById(id);
+    public Course publishCourse(UUID courseId) {
+        Course course = courseRepository.findById(courseId).orElseThrow();
+        course.setPublished(true);
+        return courseRepository.save(course);
+    }
+
+    public Course unpublishCourse(UUID courseId) {
+        Course course = courseRepository.findById(courseId).orElseThrow();
+        course.setPublished(false);
+        return courseRepository.save(course);
+    }
+
+
+    public List<Course> searchCourses(String title, String description, String instructor) {
+        // Implement search logic here
+    }
+
+    public List<Course> filterCourses(Double minPrice, Double maxPrice, LocalDateTime startDate, LocalDateTime endDate) {
+        // Implement filter logic here
     }
 }
+

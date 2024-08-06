@@ -1,0 +1,7 @@
+MessageResultResponse:
+  type: object
+  properties:
+    message:
+      type: string
+      description: "Message describing the result of the operation"
+      example: "Operation successful"

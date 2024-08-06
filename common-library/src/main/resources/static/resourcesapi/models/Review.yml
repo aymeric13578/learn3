@@ -1,0 +1,15 @@
+Review:
+  type: object
+  properties:
+    id:
+      $ref: './UUID.yml'
+    userId:
+      $ref: './UUID.yml'
+    courseId:
+      $ref: './UUID.yml'
+    rating:
+      type: integer
+      minimum: 1
+      maximum: 5
+    comment:
+      type: string

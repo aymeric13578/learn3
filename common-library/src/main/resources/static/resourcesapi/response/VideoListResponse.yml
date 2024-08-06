@@ -1,0 +1,12 @@
+VideoListResponse:
+  type: object
+  properties:
+    videos:
+      type: array
+      items:
+        $ref: '../models/VideoResponse.yml#/VideoResponse'
+    total:
+      type: integer
+      format: int32
+      description: "Total number of videos"
+      example: 100

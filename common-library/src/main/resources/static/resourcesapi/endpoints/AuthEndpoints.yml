@@ -1,0 +1,64 @@
+paths:
+  /auth/login:
+    post:
+      tags:
+        - Authentication
+      summary: User login
+      description: Authenticate user and provide a token
+      operationId: login
+      requestBody:
+        description: User credentials for login
+        content:
+          application/json:
+            schema:
+              $ref: '../models/AuthLoginData.yml#/AuthLoginData'
+        required: true
+      responses:
+        '200':
+          description: Successful login
+          content:
+            application/json:
+              schema:
+                $ref: '../models/AuthResponse.yml#/AuthResponse'
+        '400':
+          description: Bad request error
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '401':
+          description: Unauthorized request
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/UnauthorizedResponse.yml#/UnauthorizedResponse'
+        '406':
+          description: Not Acceptable
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        default:
+          description: Unexpected error
+  /auth/logout:
+    post:
+      tags:
+        - Authentication
+      summary: User logout
+      description: Invalidate user token
+      operationId: logout
+      responses:
+        '200':
+          description: Successful logout
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/MessageResultResponse.yml#/MessageResultResponse'
+        '401':
+          description: Unauthorized request
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/UnauthorizedResponse.yml#/UnauthorizedResponse'
+        default:
+          description: Unexpected error

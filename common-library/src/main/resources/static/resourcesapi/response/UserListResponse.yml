@@ -1,0 +1,12 @@
+UserListResponse:
+  type: object
+  properties:
+    users:
+      type: array
+      items:
+        $ref: '../models/UserResponse.yml#/UserResponse'
+    total:
+      type: integer
+      format: int32
+      description: "Total number of users"
+      example: 100

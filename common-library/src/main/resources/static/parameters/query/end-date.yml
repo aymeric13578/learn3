@@ -1,0 +1,7 @@
+name: end-date
+in: query
+required: false
+schema:
+  type: string
+  format: date
+  description: "End date for filtering records"

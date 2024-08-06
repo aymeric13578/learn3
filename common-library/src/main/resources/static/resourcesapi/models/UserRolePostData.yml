@@ -1,0 +1,14 @@
+UserRolePostData:
+  type: object
+  required:
+    - name
+    - description
+  properties:
+    name:
+      type: string
+      description: "Name of the user role"
+      example: "Instructor"
+    description:
+      type: string
+      description: "Description of the user role"
+      example: "Role for course instructors"

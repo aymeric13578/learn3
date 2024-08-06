@@ -1,0 +1,12 @@
+EnrollmentListResponse:
+  type: object
+  properties:
+    enrollments:
+      type: array
+      items:
+        $ref: '../models/EnrollmentResponse.yml#/EnrollmentResponse'
+    total:
+      type: integer
+      format: int32
+      description: "Total number of enrollments"
+      example: 100

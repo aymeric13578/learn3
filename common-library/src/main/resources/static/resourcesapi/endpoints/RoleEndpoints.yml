@@ -1,0 +1,236 @@
+paths:
+  /roles:
+    get:
+      tags:
+        - Role Management
+      summary: List all roles
+      description: Retrieve a list of roles
+      operationId: listRoles
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '../models/RoleListResponse.yml#/RoleListResponse'
+        '400':
+          description: Bad request error
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '401':
+          description: Unauthorized request
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/UnauthorizedResponse.yml#/UnauthorizedResponse'
+        '406':
+          description: Not Acceptable
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '429':
+          description: Too many requests
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/TooManyRequestsResponse.yml#/TooManyRequestsResponse'
+        default:
+          description: Unexpected error
+    post:
+      tags:
+        - Role Management
+      summary: Create role
+      description: Add a new role
+      operationId: createRole
+      requestBody:
+        description: Role data to create
+        content:
+          application/json:
+            schema:
+              $ref: '../models/RolePostData.yml#/RolePostData'
+        required: true
+      responses:
+        '201':
+          description: Role created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '../models/RoleResponse.yml#/RoleResponse'
+        '400':
+          description: Bad request error
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '401':
+          description: Unauthorized request
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/UnauthorizedResponse.yml#/UnauthorizedResponse'
+        '406':
+          description: Not Acceptable
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '429':
+          description: Too many requests
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/TooManyRequestsResponse.yml#/TooManyRequestsResponse'
+        default:
+          description: Unexpected error
+  /roles/{roleId}:
+    get:
+      tags:
+        - Role Management
+      summary: Get role by ID
+      description: Retrieve a role by its ID
+      operationId: getRoleById
+      parameters:
+        - $ref: '../parameters/path/role-id.yml'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '../models/RoleResponse.yml#/RoleResponse'
+        '400':
+          description: Bad request error
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '401':
+          description: Unauthorized request
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/UnauthorizedResponse.yml#/UnauthorizedResponse'
+        '404':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '406':
+          description: Not Acceptable
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '429':
+          description: Too many requests
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/TooManyRequestsResponse.yml#/TooManyRequestsResponse'
+        default:
+          description: Unexpected error
+    put:
+      tags:
+        - Role Management
+      summary: Update role
+      description: Update role data
+      operationId: updateRole
+      parameters:
+        - $ref: '../parameters/path/role-id.yml'
+      requestBody:
+        description: Role data to be updated
+        content:
+          application/json:
+            schema:
+              $ref: '../models/RolePostData.yml#/RolePostData'
+        required: true
+      responses:
+        '200':
+          description: Role updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '../models/RoleResponse.yml#/RoleResponse'
+        '400':
+          description: Bad request error
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '401':
+          description: Unauthorized request
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/UnauthorizedResponse.yml#/UnauthorizedResponse'
+        '404':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '406':
+          description: Not Acceptable
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '429':
+          description: Too many requests
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/TooManyRequestsResponse.yml#/TooManyRequestsResponse'
+        default:
+          description: Unexpected error
+    delete:
+      tags:
+        - Role Management
+      summary: Delete role
+      description: Remove a role by its ID
+      operationId: deleteRole
+      parameters:
+        - $ref: '../parameters/path/role-id.yml'
+      responses:
+        '200':
+          description: Role deleted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/MessageResultResponse.yml#/MessageResultResponse'
+        '400':
+          description: Bad request error
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '401':
+          description: Unauthorized request
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/UnauthorizedResponse.yml#/UnauthorizedResponse'
+        '404':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '406':
+          description: Not Acceptable
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '429':
+          description: Too many requests
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/TooManyRequestsResponse.yml#/TooManyRequestsResponse'
+        default:
+          description: Unexpected error

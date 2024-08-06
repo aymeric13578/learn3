@@ -1,0 +1,7 @@
+name: sort-by
+in: query
+required: false
+schema:
+  type: string
+  description: "Field to sort the results by"
+  example: "name"

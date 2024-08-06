@@ -1,0 +1,12 @@
+CourseMaterialListResponse:
+  type: object
+  properties:
+    courseMaterials:
+      type: array
+      items:
+        $ref: '../models/CourseMaterialResponse.yml#/CourseMaterialResponse'
+    total:
+      type: integer
+      format: int32
+      description: "Total number of course materials"
+      example: 100

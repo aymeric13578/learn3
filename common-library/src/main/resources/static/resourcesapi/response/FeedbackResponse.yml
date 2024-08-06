@@ -1,0 +1,31 @@
+FeedbackResponse:
+  type: object
+  required:
+    - userId
+    - courseId
+    - feedback
+  properties:
+    id:
+      type: string
+      format: uuid
+      description: "The ID of the feedback entry"
+      example: "550e8400-e29b-41d4-a716-446655440000"
+    userId:
+      type: string
+      format: uuid
+      description: "The ID of the user providing feedback"
+      example: "550e8400-e29b-41d4-a716-446655440000"
+    courseId:
+      type: string
+      format: uuid
+      description: "The ID of the course the feedback is about"
+      example: "550e8400-e29b-41d4-a716-446655440000"
+    feedback:
+      type: string
+      description: "The feedback text"
+      example: "Great course, very informative!"
+    rating:
+      type: integer
+      format: int32
+      description: "Rating given by the user"
+      example: 5

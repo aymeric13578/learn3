@@ -1,0 +1,93 @@
+openapi: 3.0.0
+info:
+  title: E-Learning Platform API
+  description: API for managing users, courses, payments, recommendations, and more.
+  version: 1.0.0
+servers:
+  - url: https://api.example.com/v1
+    description: Production server
+  - url: https://staging.example.com/v1
+    description: Staging server
+tags:
+  - name: user
+    description: Operations about users, including management and roles
+  - name: role
+    description: Operations about roles and permissions
+  - name: course
+    description: Operations related to courses, including creation and retrieval
+  - name: module
+    description: Operations related to course modules
+  - name: content
+    description: Operations related to course content
+  - name: material
+    description: Operations related to course materials
+  - name: video
+    description: Operations related to course videos
+  - name: enrollment
+    description: Operations related to user enrollments in courses
+  - name: waitlist
+    description: Operations related to user waitlists for courses
+  - name: review
+    description: Operations related to user reviews of courses
+  - name: feedback
+    description: Operations related to user feedback on courses
+  - name: payment
+    description: Operations related to course payments
+  - name: recommendation
+    description: Operations related to course recommendations
+  - name: analytics
+    description: Operations related to course and user analytics
+
+components:
+  schemas:
+    UUID:
+      $ref: './resourcesapi/models/UUID.yml'
+    User:
+      $ref: './resourcesapi/models/User.yml'
+    Role:
+      $ref: './resourcesapi/models/Role.yml'
+    Permission:
+      $ref: './resourcesapi/models/Permission.yml'
+    Course:
+      $ref: './resourcesapi/models/Course.yml'
+    Module:
+      $ref: './resourcesapi/models/Module.yml'
+    CourseContent:
+      $ref: './resourcesapi/models/CourseContent.yml'
+    CourseMaterial:
+      $ref: './resourcesapi/models/CourseMaterial.yml'
+    Video:
+      $ref: './resourcesapi/models/Video.yml'
+    Enrollment:
+      $ref: './resourcesapi/models/Enrollment.yml'
+    Waitlist:
+      $ref: './resourcesapi/models/Waitlist.yml'
+    Review:
+      $ref: './resourcesapi/models/Review.yml'
+    Feedback:
+      $ref: './resourcesapi/models/Feedback.yml'
+    Payment:
+      $ref: './resourcesapi/models/Payment.yml'
+    Recommendation:
+      $ref: './resourcesapi/models/Recommendation.yml'
+  responses:
+    NotFound:
+      $ref: './resourcesapi/response/NotFound.yml'
+
+paths:
+  /user:
+    $ref: './resourcesapi/endpoints/UserEndpoints.yml'
+  /role:
+    $ref: './resourcesapi/endpoints/RoleEndpoints.yml'
+  /course:
+    $ref: './resourcesapi/endpoints/CourseEndpoints.yml'
+  /enrollment:
+    $ref: './resourcesapi/endpoints/EnrollmentEndpoints.yml'
+  /review:
+    $ref: './resourcesapi/endpoints/ReviewEndpoints.yml'
+  /feedback:
+    $ref: './resourcesapi/endpoints/FeedbackEndpoints.yml'
+  /payment:
+    $ref: './resourcesapi/endpoints/PaymentEndpoints.yml'
+  /recommendation:
+    $ref: './resourcesapi/endpoints/RecommendationEndpoints.yml'

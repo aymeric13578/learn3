@@ -1,0 +1,19 @@
+ModulePostData:
+  type: object
+  required:
+    - title
+    - courseId
+  properties:
+    title:
+      type: string
+      description: "The title of the module"
+      example: "Introduction to Programming"
+    courseId:
+      type: string
+      format: uuid
+      description: "The ID of the course the module belongs to"
+      example: "550e8400-e29b-41d4-a716-446655440000"
+    description:
+      type: string
+      description: "Description of the module"
+      example: "This module covers the basics of programming."

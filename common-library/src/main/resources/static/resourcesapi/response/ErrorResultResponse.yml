@@ -1,0 +1,15 @@
+ErrorResultResponse:
+  type: object
+  properties:
+    error:
+      type: string
+      description: "Error code"
+      example: "VALIDATION_ERROR"
+    message:
+      type: string
+      description: "Description of the error"
+      example: "Invalid input data"
+    code:
+      type: integer
+      description: "HTTP status code"
+      example: 400

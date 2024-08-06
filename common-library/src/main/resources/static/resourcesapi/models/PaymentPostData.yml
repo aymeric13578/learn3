@@ -1,0 +1,13 @@
+PaymentPostData:
+  type: object
+  properties:
+    amount:
+      type: number
+      format: float
+      description: Amount of the payment
+    currency:
+      type: string
+      description: Currency of the payment
+  required:
+    - amount
+    - currency

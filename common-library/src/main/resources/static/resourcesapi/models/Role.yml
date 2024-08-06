@@ -1,0 +1,11 @@
+Role:
+  type: object
+  properties:
+    id:
+      $ref: './UUID.yml'
+    name:
+      type: string
+    permissions:
+      type: array
+      items:
+        $ref: './Permission.yml'

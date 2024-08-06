@@ -1,0 +1,13 @@
+Course:
+  type: object
+  properties:
+    id:
+      $ref: './UUID.yml'
+    title:
+      type: string
+    description:
+      type: string
+    modules:
+      type: array
+      items:
+        $ref: './Module.yml'

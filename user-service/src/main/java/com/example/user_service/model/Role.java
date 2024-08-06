@@ -8,17 +8,8 @@ import java.util.List;
 @Setter
 public class Role {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+    private UUID roleId;
 
-    @Column(nullable = false, unique = true)
     private String name;
 
-    @ManyToMany
-    @JoinTable(
-            name = "role_permissions",
-            joinColumns = @JoinColumn(name = "role_id"),
-            inverseJoinColumns = @JoinColumn(name = "permission_id")
-    )
-    private Set<Permission> permissions;
 }

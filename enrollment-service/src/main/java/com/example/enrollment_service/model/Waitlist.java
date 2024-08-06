@@ -3,9 +3,15 @@ package com.example.enrollment_service.model;
 @Entity
 public class Waitlist {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String userId;
-    private String courseId;
-    private String joinDate;
+    private UUID waitlistId;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "course_id")
+    private Course course;
+
+    private LocalDateTime addedDate;
 }

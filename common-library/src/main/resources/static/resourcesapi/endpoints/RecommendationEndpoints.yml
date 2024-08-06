@@ -1,0 +1,82 @@
+/recommendation:
+  get:
+    summary: Get all recommendations
+    responses:
+      '200':
+        description: A list of recommendations
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '../models/Recommendation.yml'
+  post:
+    summary: Create a new recommendation
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '../models/Recommendation.yml'
+    responses:
+      '201':
+        description: Recommendation created
+        content:
+          application/json:
+            schema:
+              $ref: '../models/Recommendation.yml'
+
+/recommendation/{recommendationId}:
+  get:
+    summary: Get a recommendation by ID
+    parameters:
+      - name: recommendationId
+        in: path
+        required: true
+        schema:
+          $ref: '../models/UUID.yml'
+    responses:
+      '200':
+        description: A single recommendation
+        content:
+          application/json:
+            schema:
+              $ref: '../models/Recommendation.yml'
+      '404':
+        $ref: '../response/NotFound.yml'
+  put:
+    summary: Update a recommendation by ID
+    parameters:
+      - name: recommendationId
+        in: path
+        required: true
+        schema:
+          $ref: '../models/UUID.yml'
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '../models/Recommendation.yml'
+    responses:
+      '200':
+        description: Updated recommendation
+        content:
+          application/json:
+            schema:
+              $ref: '../models/Recommendation.yml'
+      '404':
+        $ref: '../response/NotFound.yml'
+  delete:
+    summary: Delete a recommendation by ID
+    parameters:
+      - name: recommendationId
+        in: path
+        required: true
+        schema:
+          $ref: '../models/UUID.yml'
+    responses:
+      '204':
+        description: Recommendation deleted
+      '404':
+        $ref: '../response/NotFound.yml'

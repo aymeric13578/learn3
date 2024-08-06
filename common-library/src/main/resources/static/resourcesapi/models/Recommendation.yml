@@ -1,0 +1,11 @@
+Recommendation:
+  type: object
+  properties:
+    id:
+      $ref: './UUID.yml'
+    userId:
+      $ref: './UUID.yml'
+    courseId:
+      $ref: './UUID.yml'
+    reason:
+      type: string

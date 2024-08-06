@@ -1,0 +1,12 @@
+PermissionListResponse:
+  type: object
+  properties:
+    permissions:
+      type: array
+      items:
+        $ref: '../models/PermissionResponse.yml#/PermissionResponse'
+    total:
+      type: integer
+      format: int32
+      description: "Total number of permissions"
+      example: 100

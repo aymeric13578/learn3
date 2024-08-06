@@ -1,0 +1,19 @@
+Payment:
+  type: object
+  properties:
+    id:
+      $ref: './UUID.yml'
+    userId:
+      $ref: './UUID.yml'
+    amount:
+      type: number
+      format: float
+    date:
+      type: string
+      format: date-time
+    status:
+      type: string
+      enum:
+        - PENDING
+        - COMPLETED
+        - FAILED

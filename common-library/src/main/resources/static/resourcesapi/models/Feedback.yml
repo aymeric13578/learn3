@@ -1,0 +1,11 @@
+Feedback:
+  type: object
+  properties:
+    id:
+      $ref: './UUID.yml'
+    userId:
+      $ref: './UUID.yml'
+    contentId:
+      $ref: './UUID.yml'
+    comment:
+      type: string

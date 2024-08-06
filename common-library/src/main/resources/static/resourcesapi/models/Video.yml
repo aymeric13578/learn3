@@ -1,0 +1,11 @@
+Video:
+  type: object
+  properties:
+    id:
+      $ref: './UUID.yml'
+    title:
+      type: string
+    courseId:
+      $ref: './UUID.yml'
+    url:
+      type: string

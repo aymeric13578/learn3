@@ -1,0 +1,6 @@
+name: search-term
+in: query
+required: false
+schema:
+  type: string
+  description: "Search term for filtering results"

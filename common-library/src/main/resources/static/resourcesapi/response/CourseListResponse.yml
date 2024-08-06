@@ -1,0 +1,13 @@
+CourseListResponse:
+  type: object
+  properties:
+    courses:
+      type: array
+      items:
+        $ref: 'CourseResponse.yml#/CourseResponse'
+    total:
+      type: integer
+      description: Total number of courses
+  required:
+    - courses
+    - total

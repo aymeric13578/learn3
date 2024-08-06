@@ -1,0 +1,12 @@
+UserRoleListResponse:
+  type: object
+  properties:
+    userRoles:
+      type: array
+      items:
+        $ref: '../models/UserRoleResponse.yml#/UserRoleResponse'
+    total:
+      type: integer
+      format: int32
+      description: "Total number of user roles"
+      example: 100

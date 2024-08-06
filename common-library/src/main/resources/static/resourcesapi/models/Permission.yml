@@ -1,0 +1,7 @@
+Permission:
+  type: object
+  properties:
+    id:
+      $ref: './UUID.yml'
+    name:
+      type: string

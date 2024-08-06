@@ -1,0 +1,7 @@
+BadRequestResponse:
+  type: object
+  properties:
+    message:
+      type: string
+      description: "Bad request error"
+      example: "The request could not be understood or was missing required parameters"

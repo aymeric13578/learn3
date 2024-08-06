@@ -1,0 +1,9 @@
+spring:
+  profiles:
+    active: dev
+  datasource:
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password: password
+server:
+  port: 8081

@@ -1,0 +1,12 @@
+UserRolePermListResponse:
+  type: object
+  properties:
+    user_role_perms:
+      type: array
+      items:
+        $ref: '../models/UserRolePermResponse.yml#/UserRolePermResponse'
+    total:
+      type: integer
+      format: int32
+      description: "Total number of user role permissions"
+      example: 50

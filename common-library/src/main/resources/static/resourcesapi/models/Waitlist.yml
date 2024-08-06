@@ -1,0 +1,12 @@
+Waitlist:
+  type: object
+  properties:
+    id:
+      $ref: './UUID.yml'
+    userId:
+      $ref: './UUID.yml'
+    courseId:
+      $ref: './UUID.yml'
+    dateAdded:
+      type: string
+      format: date-time

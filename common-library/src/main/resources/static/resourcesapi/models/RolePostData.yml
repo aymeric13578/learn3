@@ -1,0 +1,9 @@
+RolePostData:
+  type: object
+  required:
+    - name
+  properties:
+    name:
+      type: string
+      description: "Name of the role"
+      example: "Admin"

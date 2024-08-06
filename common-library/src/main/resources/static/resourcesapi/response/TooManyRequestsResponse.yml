@@ -1,0 +1,7 @@
+TooManyRequestsResponse:
+  type: object
+  properties:
+    message:
+      type: string
+      description: "Too many requests"
+      example: "You have made too many requests in a short period of time"

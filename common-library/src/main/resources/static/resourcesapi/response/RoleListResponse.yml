@@ -1,0 +1,12 @@
+RoleListResponse:
+  type: object
+  properties:
+    roles:
+      type: array
+      items:
+        $ref: '../models/RoleResponse.yml#/RoleResponse'
+    total:
+      type: integer
+      format: int32
+      description: "Total number of roles"
+      example: 10

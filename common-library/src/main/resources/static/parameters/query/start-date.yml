@@ -1,0 +1,7 @@
+name: start-date
+in: query
+required: false
+schema:
+  type: string
+  format: date
+  description: "Start date for filtering records"

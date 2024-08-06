@@ -1,21 +1,9 @@
-#Configure the Spring Cloud Config Server and Vault settings
 spring:
-  cloud:
-    config:
-      server:
-        vault:
-          enabled: true
-          uri: http://localhost:8200
-          token: your-vault-token
-        uri: http://localhost:8888
-        default-label: main
   application:
-    name: config-server
-  profiles:
-    active: dev
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: '*'
+    name: my-app
+  datasource:
+    url: jdbc:mysql://localhost:3306/mydb
+    username: user
+    password: pass
+server:
+  port: 8080

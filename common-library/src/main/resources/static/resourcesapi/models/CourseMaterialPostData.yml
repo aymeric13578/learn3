@@ -1,0 +1,24 @@
+CourseMaterialPostData:
+  type: object
+  required:
+    - title
+    - type
+    - courseId
+  properties:
+    title:
+      type: string
+      description: "Title of the course material"
+      example: "Chapter 1 Notes"
+    type:
+      type: string
+      description: "Type of the material (e.g., PDF, Document)"
+      example: "PDF"
+    url:
+      type: string
+      description: "URL where the material is located"
+      example: "https://example.com/material.pdf"
+    courseId:
+      type: string
+      format: uuid
+      description: "The ID of the course this material belongs to"
+      example: "550e8400-e29b-41d4-a716-446655440000"

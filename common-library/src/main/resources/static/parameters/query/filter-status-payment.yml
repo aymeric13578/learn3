@@ -1,0 +1,11 @@
+in: query
+name: filterAddressType
+schema:
+  type: string
+required: false
+description: The Type of  the Address
+enum:
+  - SHIPPING
+  - BILLING
+  - DEFAULT
+default: DEFAULT

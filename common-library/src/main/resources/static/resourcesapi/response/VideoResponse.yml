@@ -1,0 +1,25 @@
+VideoResponse:
+  type: object
+  required:
+    - title
+    - url
+    - courseId
+  properties:
+    id:
+      type: string
+      format: uuid
+      description: "The ID of the video"
+      example: "550e8400-e29b-41d4-a716-446655440000"
+    title:
+      type: string
+      description: "Title of the video"
+      example: "Introduction to Algorithms"
+    url:
+      type: string
+      description: "URL of the video"
+      example: "https://example.com/video.mp4"
+    courseId:
+      type: string
+      format: uuid
+      description: "The ID of the course this video belongs to"
+      example: "550e8400-e29b-41d4-a716-446655440000"

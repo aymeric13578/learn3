@@ -5,13 +5,20 @@ import java.time.LocalDateTime;
 @Entity
 public class Enrollment {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String userId;
-    private String courseId;
-    private LocalDateTime enrollmentDate;
+    private UUID enrollmentId;
 
-    private Integer progress;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "course_id")
+    private Course course;
+
+    private LocalDateTime enrollmentDate;
+    private double progress;
+
+    private String status;
 
     // Getters and Setters
 }

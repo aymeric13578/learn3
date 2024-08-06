@@ -1,0 +1,19 @@
+PermissionResponse:
+  type: object
+  required:
+    - name
+    - description
+  properties:
+    id:
+      type: string
+      format: uuid
+      description: "The ID of the permission"
+      example: "550e8400-e29b-41d4-a716-446655440000"
+    name:
+      type: string
+      description: "Name of the permission"
+      example: "view_course"
+    description:
+      type: string
+      description: "Description of the permission"
+      example: "Permission to view a course"
