@@ -1,17 +1,22 @@
 package com.example.course_service.model;
 
 import com.example.user_service.model.User;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
+@Setter
+@Getter
+@ToString
 public class Course {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID courseId;
 
     private String title;

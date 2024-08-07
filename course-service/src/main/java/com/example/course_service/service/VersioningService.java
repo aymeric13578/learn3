@@ -1,5 +1,7 @@
 package com.example.course_service.service;
 
+import com.example.course_service.model.ContentVersion;
+import com.example.course_service.repository.ContentVersionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;

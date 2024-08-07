@@ -1,5 +1,16 @@
 package com.example.user_service.service;
 
+import com.example.user_service.model.Permission;
+import com.example.user_service.model.Role;
+import com.example.user_service.repository.PermissionRepository;
+import com.example.user_service.repository.RoleRepository;
+import jakarta.transaction.Transactional;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
+
 @Service
 @Transactional
 public class RoleService {

@@ -1,9 +1,12 @@
-spring:
-  application:
-    name: my-app
-  datasource:
-    url: jdbc:mysql://localhost:3306/mydb
-    username: user
-    password: pass
 server:
-  port: 8080
+  port: 8888
+spring:
+  profiles:
+    active: native
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: classpath:/configurations

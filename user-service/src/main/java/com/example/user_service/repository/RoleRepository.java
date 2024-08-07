@@ -1,5 +1,10 @@
 package com.example.user_service.repository;
 
-public interface RoleRepository extends JpaRepository<Role, UUID>{
+import com.example.user_service.model.Role;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.UUID;
+
+public interface RoleRepository extends JpaRepository<Role, UUID> {
     Role findByName(String name);
 }

@@ -1,5 +1,10 @@
 package com.example.course_service.controller;
 
+import com.example.course_service.model.Module;
+import com.example.course_service.service.ModuleService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;

@@ -1,6 +1,7 @@
 package com.example.course_service.service;
 
 import com.example.course_service.model.Course;
+import com.example.course_service.model.Module;
 import com.example.course_service.repository.CourseRepository;
 import com.example.course_service.repository.ModuleRepository;
 import org.springframework.beans.factory.annotation.Autowired;

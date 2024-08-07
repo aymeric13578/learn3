@@ -1,82 +1,227 @@
-/recommendation:
-  get:
-    summary: Get all recommendations
-    responses:
-      '200':
-        description: A list of recommendations
+paths:
+  /recommendations:
+    get:
+      tags:
+        - Recommendation Management
+      summary: Get all recommendations
+      description: Retrieve a list of all recommendations
+      operationId: listRecommendations
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '../models/Recommendation.yml#/Recommendation'
+        '400':
+          description: Bad request error
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '401':
+          description: Unauthorized request
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/UnauthorizedResponse.yml#/UnauthorizedResponse'
+        '406':
+          description: Not Acceptable
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '429':
+          description: Too many requests
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/TooManyRequestsResponse.yml#/TooManyRequestsResponse'
+        default:
+          description: Unexpected error
+    post:
+      tags:
+        - Recommendation Management
+      summary: Create a new recommendation
+      description: Register a new recommendation
+      operationId: createRecommendation
+      requestBody:
+        description: Recommendation data to create
         content:
           application/json:
             schema:
-              type: array
-              items:
-                $ref: '../models/Recommendation.yml'
-  post:
-    summary: Create a new recommendation
-    requestBody:
-      required: true
-      content:
-        application/json:
-          schema:
-            $ref: '../models/Recommendation.yml'
-    responses:
-      '201':
-        description: Recommendation created
-        content:
-          application/json:
-            schema:
-              $ref: '../models/Recommendation.yml'
+              $ref: '../models/Recommendation.yml#/Recommendation'
+        required: true
+      responses:
+        '201':
+          description: Recommendation created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '../models/Recommendation.yml#/Recommendation'
+        '400':
+          description: Bad request error
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '401':
+          description: Unauthorized request
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/UnauthorizedResponse.yml#/UnauthorizedResponse'
+        '406':
+          description: Not Acceptable
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '429':
+          description: Too many requests
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/TooManyRequestsResponse.yml#/TooManyRequestsResponse'
+        default:
+          description: Unexpected error
 
-/recommendation/{recommendationId}:
-  get:
-    summary: Get a recommendation by ID
-    parameters:
-      - name: recommendationId
-        in: path
-        required: true
-        schema:
-          $ref: '../models/UUID.yml'
-    responses:
-      '200':
-        description: A single recommendation
-        content:
-          application/json:
-            schema:
-              $ref: '../models/Recommendation.yml'
-      '404':
-        $ref: '../response/NotFound.yml'
-  put:
-    summary: Update a recommendation by ID
-    parameters:
-      - name: recommendationId
-        in: path
-        required: true
-        schema:
-          $ref: '../models/UUID.yml'
-    requestBody:
-      required: true
-      content:
-        application/json:
+  /recommendations/{recommendationId}:
+    get:
+      tags:
+        - Recommendation Management
+      summary: Get a recommendation by ID
+      description: Retrieve a recommendation by its ID
+      operationId: getRecommendationById
+      parameters:
+        - name: recommendationId
+          in: path
+          required: true
           schema:
-            $ref: '../models/Recommendation.yml'
-    responses:
-      '200':
-        description: Updated recommendation
+            $ref: '../models/UUID.yml#/UUID'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '../models/Recommendation.yml#/Recommendation'
+        '404':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+    put:
+      tags:
+        - Recommendation Management
+      summary: Update a recommendation by ID
+      description: Update recommendation data
+      operationId: updateRecommendation
+      parameters:
+        - name: recommendationId
+          in: path
+          required: true
+          schema:
+            $ref: '../models/UUID.yml#/UUID'
+      requestBody:
+        description: Recommendation data to be updated
         content:
           application/json:
             schema:
-              $ref: '../models/Recommendation.yml'
-      '404':
-        $ref: '../response/NotFound.yml'
-  delete:
-    summary: Delete a recommendation by ID
-    parameters:
-      - name: recommendationId
-        in: path
+              $ref: '../models/Recommendation.yml#/Recommendation'
         required: true
-        schema:
-          $ref: '../models/UUID.yml'
-    responses:
-      '204':
-        description: Recommendation deleted
-      '404':
-        $ref: '../response/NotFound.yml'
+      responses:
+        '200':
+          description: Recommendation updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '../models/Recommendation.yml#/Recommendation'
+        '404':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+    delete:
+      tags:
+        - Recommendation Management
+      summary: Delete a recommendation by ID
+      description: Remove a recommendation by its ID
+      operationId: deleteRecommendation
+      parameters:
+        - name: recommendationId
+          in: path
+          required: true
+          schema:
+            $ref: '../models/UUID.yml#/UUID'
+      responses:
+        '204':
+          description: Recommendation deleted successfully
+        '404':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+
+  /recommendations/user/{user_id}:
+    get:
+      tags:
+        - Recommendation Management
+      summary: Retrieve course recommendations for a specific user
+      description: Get recommendations tailored for a specific user
+      operationId: getRecommendationsByUser
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '../models/Recommendation.yml#/Recommendation'
+        '404':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+
+  /recommendations/course/{course_id}:
+    get:
+      tags:
+        - Recommendation Management
+      summary: Retrieve recommendations related to a specific course
+      description: Get recommendations related to a specific course
+      operationId: getRecommendationsByCourse
+      parameters:
+        - name: course_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '../models/Recommendation.yml#/Recommendation'
+        '404':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'

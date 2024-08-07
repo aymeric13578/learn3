@@ -1,5 +1,7 @@
 package com.example.course_service.controller;
 
+import com.example.course_service.model.CourseContent;
+import com.example.course_service.service.CourseContentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;

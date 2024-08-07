@@ -237,3 +237,108 @@ paths:
                 $ref: '../responses/TooManyRequestsResponse.yml#/TooManyRequestsResponse'
         default:
           description: Unexpected error
+  /enrollments/user/{user_id}:
+    get:
+      tags:
+        - Enrollment Management
+      summary: Retrieve enrollments for a specific user with progress tracking
+      description: Retrieve enrollments for a specific user with progress tracking
+      operationId: getUserEnrollments
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '../models/EnrollmentListResponse.yml#/EnrollmentListResponse'
+        '400':
+          description: Bad request error
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '401':
+          description: Unauthorized request
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/UnauthorizedResponse.yml#/UnauthorizedResponse'
+        '404':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '406':
+          description: Not Acceptable
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '429':
+          description: Too many requests
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/TooManyRequestsResponse.yml#/TooManyRequestsResponse'
+        default:
+          description: Unexpected error
+
+  /enrollments/course/{course_id}:
+    get:
+        tags:
+          - Enrollment Management
+        summary: Retrieve enrollments for a specific course
+        description: Retrieve enrollments for a specific course
+        operationId: getCourseEnrollments
+        parameters:
+          - name: course_id
+            in: path
+            required: true
+            schema:
+              type: string
+        responses:
+          '200':
+            description: Successful operation
+            content:
+              application/json:
+                schema:
+                  $ref: '../models/EnrollmentListResponse.yml#/EnrollmentListResponse'
+          '400':
+            description: Bad request error
+            content:
+              application/json:
+                schema:
+                  $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+          '401':
+            description: Unauthorized request
+            content:
+              application/json:
+                schema:
+                  $ref: '../responses/UnauthorizedResponse.yml#/UnauthorizedResponse'
+          '404':
+            description: Resource not found
+            content:
+              application/json:
+                schema:
+                  $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+          '406':
+            description: Not Acceptable
+            content:
+              application/json:
+                schema:
+                  $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+          '429':
+            description: Too many requests
+            content:
+              application/json:
+                schema:
+                  $ref: '../responses/TooManyRequestsResponse.yml#/TooManyRequestsResponse'
+          default:
+            description: Unexpected error

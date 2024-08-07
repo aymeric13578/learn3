@@ -1,0 +1,7 @@
+name: userRolePermId
+in: path
+required: true
+schema:
+  type: string
+  format: uuid
+  description: "The unique identifier of the user role permission"

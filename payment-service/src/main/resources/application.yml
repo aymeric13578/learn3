@@ -1,49 +1,5 @@
-server:
-  port: 8080
-
 spring:
+  config:
+    import: optional:configserver:http://localhost:8888
   application:
     name: payment-service
-
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
-
-payment:
-  gateways:
-    stripe:
-      apiKey: ${STRIPE_API_KEY}
-    paypal:
-      clientId: ${PAYPAL_CLIENT_ID}
-      clientSecret: ${PAYPAL_CLIENT_SECRET}
-
-subscription:
-  autoRenewal: true
-
-#Replace ${STRIPE_API_KEY}, ${PAYPAL_CLIENT_ID}, and ${PAYPAL_CLIENT_SECRET} with actual environment variables or configuration properties.
-#Adjust subscription.autoRenewal based on whether you want to enable auto-renewal by default
-
-#Service Discovery
-#
-#Ensure that payment-service is registered with Eureka (or your service registry). This is handled by the @EnableEurekaClient annotation and configuration in application.yml.
-#
-#Access Payment Service
-#
-#Other modules can communicate with payment-service using REST APIs or other communication methods. For example, you can use Feign clients or RestTemplate to interact with the payment service
-
-#@FeignClient(name = "payment-service")
-#public interface PaymentClient {
-#    @PostMapping("/api/payments/charge")
-#    void chargePayment(@RequestBody PaymentRequest request);
-#}
-
-#Ensure sensitive data (API keys, client secrets) is securely managed, possibly using Spring Cloud Config Server or environment variables.
-
-#Start the payment-service module and verify it's running and registered with Eureka.
-
-#Test integration with payment gateways using their sandbox environments before going live.
-
-#Simulate subscription management scenarios to ensure proper handling of subscriptions and auto-renewals.
-
-#Implement and test various fraud detection scenarios to ensure the system can effectively prevent fraudulent transactions.

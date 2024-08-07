@@ -4,6 +4,8 @@ import com.example.course_service.model.ContentVersion;
 import com.example.course_service.model.CourseContent;
 import com.example.course_service.repository.ContentVersionRepository;
 import com.example.course_service.repository.CourseContentRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.UUID;

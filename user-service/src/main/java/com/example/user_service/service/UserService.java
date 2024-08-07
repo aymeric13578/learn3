@@ -1,5 +1,12 @@
 package com.example.user_service.service;
 
+import com.example.user_service.model.User;
+import com.example.user_service.repository.RoleRepository;
+import com.example.user_service.repository.UserRepository;
+import jakarta.transaction.Transactional;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 

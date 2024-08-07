@@ -1,5 +1,15 @@
 package com.example.course_service.service;
 
+import com.example.course_service.model.Course;
+import com.example.course_service.repository.CourseRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
+
 @Service
 public class CourseService {
 

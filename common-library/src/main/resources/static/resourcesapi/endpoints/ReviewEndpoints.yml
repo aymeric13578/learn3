@@ -1,82 +1,293 @@
-/review:
-  get:
-    summary: Get all reviews
-    responses:
-      '200':
-        description: A list of reviews
+paths:
+  /reviews:
+    get:
+      tags:
+        - Review Management
+      summary: Get all reviews
+      description: Retrieve a list of all reviews
+      operationId: listReviews
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '../models/Review.yml#/Review'
+        '400':
+          description: Bad request error
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '401':
+          description: Unauthorized request
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/UnauthorizedResponse.yml#/UnauthorizedResponse'
+        '406':
+          description: Not Acceptable
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '429':
+          description: Too many requests
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/TooManyRequestsResponse.yml#/TooManyRequestsResponse'
+        default:
+          description: Unexpected error
+    post:
+      tags:
+        - Review Management
+      summary: Create a new review
+      description: Register a new review
+      operationId: createReview
+      requestBody:
+        description: Review data to create
         content:
           application/json:
             schema:
-              type: array
-              items:
-                $ref: '../models/Review.yml'
-  post:
-    summary: Create a new review
-    requestBody:
-      required: true
-      content:
-        application/json:
-          schema:
-            $ref: '../models/Review.yml'
-    responses:
-      '201':
-        description: Review created
-        content:
-          application/json:
-            schema:
-              $ref: '../models/Review.yml'
+              $ref: '../models/Review.yml#/Review'
+        required: true
+      responses:
+        '201':
+          description: Review created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '../models/Review.yml#/Review'
+        '400':
+          description: Bad request error
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '401':
+          description: Unauthorized request
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/UnauthorizedResponse.yml#/UnauthorizedResponse'
+        '406':
+          description: Not Acceptable
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '429':
+          description: Too many requests
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/TooManyRequestsResponse.yml#/TooManyRequestsResponse'
+        default:
+          description: Unexpected error
 
-/review/{reviewId}:
-  get:
-    summary: Get a review by ID
-    parameters:
-      - name: reviewId
-        in: path
-        required: true
-        schema:
-          $ref: '../models/UUID.yml'
-    responses:
-      '200':
-        description: A single review
+  /reviews/{reviewId}:
+    get:
+      tags:
+        - Review Management
+      summary: Get a review by ID
+      description: Retrieve a review by its ID
+      operationId: getReviewById
+      parameters:
+        - $ref: '../parameters/path/review-id.yml'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '../models/Review.yml#/Review'
+        '400':
+          description: Bad request error
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '401':
+          description: Unauthorized request
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/UnauthorizedResponse.yml#/UnauthorizedResponse'
+        '404':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '406':
+          description: Not Acceptable
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '429':
+          description: Too many requests
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/TooManyRequestsResponse.yml#/TooManyRequestsResponse'
+        default:
+          description: Unexpected error
+    put:
+      tags:
+        - Review Management
+      summary: Update a review by ID
+      description: Update review data
+      operationId: updateReview
+      parameters:
+        - $ref: '../parameters/path/review-id.yml'
+      requestBody:
+        description: Review data to be updated
         content:
           application/json:
             schema:
-              $ref: '../models/Review.yml'
-      '404':
-        $ref: '../response/NotFound.yml'
-  put:
-    summary: Update a review by ID
-    parameters:
-      - name: reviewId
-        in: path
+              $ref: '../models/Review.yml#/Review'
         required: true
-        schema:
-          $ref: '../models/UUID.yml'
-    requestBody:
-      required: true
-      content:
-        application/json:
+      responses:
+        '200':
+          description: Review updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '../models/Review.yml#/Review'
+        '400':
+          description: Bad request error
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '401':
+          description: Unauthorized request
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/UnauthorizedResponse.yml#/UnauthorizedResponse'
+        '404':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '406':
+          description: Not Acceptable
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '429':
+          description: Too many requests
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/TooManyRequestsResponse.yml#/TooManyRequestsResponse'
+        default:
+          description: Unexpected error
+    delete:
+      tags:
+        - Review Management
+      summary: Delete a review by ID
+      description: Remove a review by its ID
+      operationId: deleteReview
+      parameters:
+        - $ref: '../parameters/path/review-id.yml'
+      responses:
+        '204':
+          description: Review deleted successfully
+        '400':
+          description: Bad request error
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '401':
+          description: Unauthorized request
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/UnauthorizedResponse.yml#/UnauthorizedResponse'
+        '404':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '406':
+          description: Not Acceptable
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+        '429':
+          description: Too many requests
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/TooManyRequestsResponse.yml#/TooManyRequestsResponse'
+        default:
+          description: Unexpected error
+
+  /reviews/user/{user_id}:
+    get:
+      tags:
+        - Review Management
+      summary: Retrieve reviews made by a specific user
+      description: Get all reviews submitted by a specific user
+      operationId: getReviewsByUser
+      parameters:
+        - name: user_id
+          in: path
+          required: true
           schema:
-            $ref: '../models/Review.yml'
-    responses:
-      '200':
-        description: Updated review
-        content:
-          application/json:
-            schema:
-              $ref: '../models/Review.yml'
-      '404':
-        $ref: '../response/NotFound.yml'
-  delete:
-    summary: Delete a review by ID
-    parameters:
-      - name: reviewId
-        in: path
-        required: true
-        schema:
-          $ref: '../models/UUID.yml'
-    responses:
-      '204':
-        description: Review deleted
-      '404':
-        $ref: '../response/NotFound.yml'
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '../models/Review.yml#/Review'
+        '404':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+
+  /feedbacks/user/{user_id}:
+    get:
+      tags:
+        - Feedback Management
+      summary: Retrieve feedbacks made by a specific user
+      description: Get all feedbacks submitted by a specific user
+      operationId: getFeedbacksByUser
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '../models/Feedback.yml#/Feedback'
+        '404':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'

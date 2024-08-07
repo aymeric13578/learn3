@@ -569,3 +569,166 @@ paths:
               description: Not Acceptable
             '429':
               description: Too many requests
+      /courses/{course_id}/feedbacks:
+        get:
+          tags:
+            - Course Management
+          summary: Retrieve feedbacks for a specific course with pagination
+          parameters:
+            - name: course_id
+              in: path
+              required: true
+              schema:
+                type: string
+            - name: offset
+              in: query
+              schema:
+                type: integer
+              description: The number of items to skip before starting to collect the result set
+            - name: limit
+              in: query
+              schema:
+                type: integer
+              description: The numbers of items to return
+          responses:
+            '200':
+              description: Successful operation
+              content:
+                application/json:
+                  schema:
+                    type: array
+                    items:
+                      $ref: '../models/Feedback.yml#/Feedback'
+            '400':
+              description: Bad request error
+              content:
+                application/json:
+                  schema:
+                    $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+            '401':
+              description: Unauthorized request
+              content:
+                application/json:
+                  schema:
+                    $ref: '../responses/UnauthorizedResponse.yml#/UnauthorizedResponse'
+            '406':
+              description: Not Acceptable
+              content:
+                application/json:
+                  schema:
+                    $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+            '429':
+              description: Too many requests
+              content:
+                application/json:
+                  schema:
+                    $ref: '../responses/TooManyRequestsResponse.yml#/TooManyRequestsResponse'
+            default:
+              description: Unexpected error
+      /courses/{course_id}/waitlist:
+        post:
+          tags:
+            - Course Management
+          summary: Add a user to the waitlist for a course directly
+          parameters:
+            - name: course_id
+              in: path
+              required: true
+              schema:
+                type: string
+          requestBody:
+            description: User waitlist data
+            content:
+              application/json:
+                schema:
+                  $ref: '../models/WaitlistPostData.yml#/WaitlistPostData'
+            required: true
+          responses:
+            '201':
+              description: User added to waitlist successfully
+              content:
+                application/json:
+                  schema:
+                    $ref: '../models/WaitlistResponse.yml#/WaitlistResponse'
+            '400':
+              description: Bad request error
+              content:
+                application/json:
+                  schema:
+                    $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+            '401':
+              description: Unauthorized request
+              content:
+                application/json:
+                  schema:
+                    $ref: '../responses/UnauthorizedResponse.yml#/UnauthorizedResponse'
+            '406':
+              description: Not Acceptable
+              content:
+                application/json:
+                  schema:
+                    $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+            '429':
+              description: Too many requests
+              content:
+                application/json:
+                  schema:
+                    $ref: '../responses/TooManyRequestsResponse.yml#/TooManyRequestsResponse'
+            default:
+              description: Unexpected error
+      /courses/{course_id}/modules:
+        get:
+          tags:
+            - Course Management
+          summary: Retrieve modules for a specific course with pagination
+          parameters:
+            - name: course_id
+              in: path
+              required: true
+              schema:
+                type: string
+            - name: offset
+              in: query
+              schema:
+                type: integer
+              description: The number of items to skip before starting to collect the result set
+            - name: limit
+              in: query
+              schema:
+                type: integer
+              description: The numbers of items to return
+          responses:
+            '200':
+              description: Successful operation
+              content:
+                application/json:
+                  schema:
+                    type: array
+                    items:
+                      $ref: '../models/Module.yml#/Module'
+            '400':
+              description: Bad request error
+              content:
+                application/json:
+                  schema:
+                    $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+            '401':
+              description: Unauthorized request
+              content:
+                application/json:
+                  schema:
+                    $ref: '../responses/UnauthorizedResponse.yml#/UnauthorizedResponse'
+            '406':
+              description: Not Acceptable
+              content:
+                application/json:
+                  schema:
+                    $ref: '../responses/ErrorResultResponse.yml#/ErrorResultResponse'
+            '429':
+              description: Too many requests
+              content:
+                application/json:
+                  schema:
+                    $ref: '../responses/TooManyRequestsResponse.yml#/TooManyRequestsResponse'
+            default:
+              description: Unexpected error
