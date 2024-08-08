@@ -52,7 +52,7 @@ services:
     image: your-dockerhub-username/bff:${GIT_TAG}
     container_name: bff
     ports:
-      - "9090:9090"
+      - "7070:7070"
     depends_on:
       - api-gateway
 

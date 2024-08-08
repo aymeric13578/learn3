@@ -1,9 +1,46 @@
+server:
+  port: 7070
+
 spring:
   graphql:
     servlet:
       mapping: /graphql
       cors:
         allowed-origins: "*"
+    schema:
+      locations: classpath:graphql/
+    playground:
+      enabled: true
+      mapping: /playground
+  graphiql:
+    enabled: true
+    path: /graphiql
   cache:
+    type: caffeine
+    cache-names:
+      - users
+      - courses
+      - enrollments
+      - reviews
+      - recommendations
+      - feedbacks
+      - payments
+      - reports
     caffeine:
-      spec: maximumSize=1000,expireAfterWrite=5m
+      spec: maximumSize=500,expireAfterWrite=60m
+
+  logging:
+    level:
+      root: INFO
+      com.example.bff_service: DEBUG
+# application.yml
+services:
+  user-service: http://localhost:8081/user-service
+  course-service: http://localhost:8082/course-service
+  enrollment-service: http://localhost:8083/enrollment-service
+  review-service: http://localhost:8084/review-service
+  recommendation-service: http://localhost:8085/recommendation-service
+  feedback-service: http://localhost:8086/feedback-service
+  payment-service: http://localhost:8087/payment-service
+
+#Configures caching using Caffeine. The cache names correspond to the ones you're using in your @Cacheable annotations. The spec configures Caffeine to hold a maximum of 500 entries and expire entries 60 minutes after writing.
