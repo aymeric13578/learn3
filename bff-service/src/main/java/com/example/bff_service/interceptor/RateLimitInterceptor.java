@@ -1,4 +1,5 @@
 package com.example.bff_service.interceptor;
+import org.springframework.lang.NonNull;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -14,7 +15,7 @@ public class RateLimitInterceptor implements HandlerInterceptor {
     private final int MAX_REQUESTS_PER_MINUTE = 60; // Set the rate limit here
 
     @Override
-    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+    public boolean preHandle(@NonNull HttpServletRequest request, @NonNull HttpServletResponse response, @NonNull Object handler) throws Exception {
         String clientIp = getClientIp(request);
 
         RateLimitInfo rateLimitInfo = requestCounts.computeIfAbsent(clientIp, k -> new RateLimitInfo());
@@ -47,7 +48,7 @@ public class RateLimitInterceptor implements HandlerInterceptor {
     }
 
     private static class RateLimitInfo {
-        private AtomicInteger requestCount = new AtomicInteger(0);
+        private final AtomicInteger requestCount = new AtomicInteger(0);
         private long timestamp = System.currentTimeMillis();
     }
 
