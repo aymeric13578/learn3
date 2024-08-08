@@ -2,22 +2,24 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="course-service" />
-        <module name="config-server" />
-        <module name="payment-service" />
-        <module name="message-broker" />
         <module name="bff-service" />
         <module name="review-service" />
         <module name="api-getaway" />
-        <module name="report-service" />
         <module name="enrollment-service" />
         <module name="notification-service" />
-        <module name="service-registry" />
         <module name="recommendation-service" />
+        <module name="course-service" />
+        <module name="config-server" />
+        <module name="payment-service" />
+        <module name="activity-service" />
+        <module name="message-broker" />
+        <module name="report-service" />
+        <module name="service-registry" />
       </profile>
       <profile name="Annotation profile for common-library" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
@@ -43,6 +45,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="activity-service" options="-parameters" />
       <module name="api-getaway" options="-parameters" />
       <module name="bff-service" options="-parameters" />
       <module name="common-library" options="-parameters" />

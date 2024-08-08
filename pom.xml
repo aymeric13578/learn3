@@ -30,6 +30,7 @@
         <module>bff-service</module>
         <module>api-getaway</module>
         <module>notification-service</module>
+        <module>activity-service</module>
     </modules>
 
     <properties>

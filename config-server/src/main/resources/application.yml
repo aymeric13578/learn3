@@ -6,7 +6,9 @@ spring:
   application:
     name: config-server
   cloud:
+    compatibility-verifier:
+      enabled: false
     config:
       server:
         native:
-          search-locations: classpath:/configurations
+          search-locations: classpath:/configuration

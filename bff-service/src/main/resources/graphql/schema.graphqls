@@ -4,6 +4,9 @@ type Query {
   enrollments(userId: ID!): [Enrollment]
   reviews(courseId: ID!): [Review]
   recommendations(userId: ID!): [Recommendation]
+  feedbacks(courseId: ID!): [Feedback]
+  payments(userId: ID!): [Payment]
+  analytics(courseId: ID!): [Analytics]
 }
 
 type Mutation {
@@ -13,6 +16,8 @@ type Mutation {
   enrollUser(input: EnrollUserInput): Enrollment
   addReview(input: AddReviewInput): Review
   processPayment(input: ProcessPaymentInput): Payment
+  addFeedback(input: AddFeedbackInput): Feedback
+  addRecommendation(input: AddRecommendationInput): Recommendation
 }
 
 type User {
@@ -22,49 +27,90 @@ type User {
   firstName: String!
   lastName: String!
   roles: [Role]
+  enrollments: [Enrollment]
+  waitlist: [Waitlist]
+  reviews: [Review]
+  feedbacks: [Feedback]
+  payments: [Payment]
+  recommendations: [Recommendation]
+  analytics: [Analytics]
 }
 
 type Course {
   id: ID!
   title: String!
   description: String!
-  instructorId: ID!
+  instructor: User
   price: Float!
   modules: [Module]
+  contents: [CourseContent]
+  materials: [CourseMaterial]
+  videos: [Video]
+  enrollments: [Enrollment]
+  waitlist: [Waitlist]
+  reviews: [Review]
+  feedbacks: [Feedback]
+  payments: [Payment]
+  recommendations: [Recommendation]
+  analytics: [Analytics]
 }
 
 type Enrollment {
   id: ID!
-  userId: ID!
-  courseId: ID!
+  user: User
+  course: Course
   enrollmentDate: String!
-  progress: Int!
+  progress: Float!
+}
+
+type Waitlist {
+  id: ID!
+  user: User
+  course: Course
+  addedDate: String!
 }
 
 type Review {
   id: ID!
-  userId: ID!
-  courseId: ID!
+  user: User
+  course: Course
   rating: Int!
   comment: String!
   createdAt: String!
+  updatedAt: String!
 }
 
-type Recommendation {
+type Feedback {
   id: ID!
-  userId: ID!
-  courseId: ID!
-  recommendedOn: String!
+  user: User
+  course: Course
+  feedbackType: String!
+  feedbackData: String!
 }
 
 type Payment {
   id: ID!
-  userId: ID!
-  courseId: ID!
+  user: User
+  course: Course
   amount: Float!
   status: String!
   transactionId: String!
   paymentDate: String!
+}
+
+type Recommendation {
+  id: ID!
+  user: User
+  course: Course
+  recommendedOn: String!
+}
+
+type Analytics {
+  id: ID!
+  course: Course
+  user: User
+  activityType: String!
+  timestamp: String!
 }
 
 type Role {
@@ -74,10 +120,31 @@ type Role {
 
 type Module {
   id: ID!
-  courseId: ID!
+  course: Course
   title: String!
   content: String!
   order: Int!
+}
+
+type CourseContent {
+  id: ID!
+  course: Course
+  contentType: String!
+  contentData: String!
+}
+
+type CourseMaterial {
+  id: ID!
+  course: Course
+  materialType: String!
+  materialData: String!
+}
+
+type Video {
+  id: ID!
+  courseContent: CourseContent
+  videoUrl: String!
+  duration: Int!
 }
 
 input CreateUserInput {
@@ -119,3 +186,14 @@ input ProcessPaymentInput {
   amount: Float!
 }
 
+input AddFeedbackInput {
+  userId: ID!
+  courseId: ID!
+  feedbackType: String!
+  feedbackData: String!
+}
+
+input AddRecommendationInput {
+  userId: ID!
+  courseId: ID!
+}
