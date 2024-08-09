@@ -3,9 +3,9 @@ CourseMaterial:
   properties:
     id:
       $ref: './UUID.yml'
-    title:
+    materialType:
       type: string
-    contentId:
-      $ref: './UUID.yml'
-    url:
+    materialData:
       type: string
+    course:
+      $ref: './Course.yml'

@@ -3,16 +3,20 @@ Enrollment:
   properties:
     id:
       $ref: './UUID.yml'
-    userId:
-      $ref: './UUID.yml'
-    courseId:
-      $ref: './UUID.yml'
     dateEnrolled:
       type: string
       format: date-time
+    progress:
+      type: number
+      format: double
     status:
       type: string
       enum:
         - ENROLLED
         - COMPLETED
         - DROPPED
+    user:
+      $ref: './User.yml'
+    course:
+      $ref: './Course.yml'
+

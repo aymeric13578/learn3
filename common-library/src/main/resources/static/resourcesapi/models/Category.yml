@@ -1,0 +1,14 @@
+Category:
+  type: object
+  properties:
+    categoryId:
+      type: string
+      format: uuid
+    name:
+      type: string
+    description:
+      type: string
+    courses:
+      type: array
+      items:
+        $ref: './Course.yml'

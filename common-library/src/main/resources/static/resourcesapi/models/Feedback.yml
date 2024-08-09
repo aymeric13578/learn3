@@ -3,9 +3,15 @@ Feedback:
   properties:
     id:
       $ref: './UUID.yml'
-    userId:
-      $ref: './UUID.yml'
-    contentId:
-      $ref: './UUID.yml'
+    user:
+      $ref: './User.yml'
+    course:
+      $ref: './Course.yml'
+    feedbackType:
+      type: string
+    feedbackData:
+      type: string
+    resolved:
+      type: boolean
     comment:
       type: string

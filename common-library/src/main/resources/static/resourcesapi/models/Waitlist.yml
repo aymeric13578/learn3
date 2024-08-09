@@ -3,10 +3,10 @@ Waitlist:
   properties:
     id:
       $ref: './UUID.yml'
-    userId:
-      $ref: './UUID.yml'
-    courseId:
-      $ref: './UUID.yml'
+    user:
+      $ref: '#/components/schemas/User'
+    course:
+      $ref: '#/components/schemas/Course'
     dateAdded:
       type: string
       format: date-time

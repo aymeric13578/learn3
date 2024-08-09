@@ -3,9 +3,14 @@ Video:
   properties:
     id:
       $ref: './UUID.yml'
-    title:
+    videoUrl:
       type: string
-    courseId:
-      $ref: './UUID.yml'
-    url:
-      type: string
+    duration:
+        type: integer
+    lastWatched:
+        type: string
+        format: date-time
+    watchedDuration:
+        type: integer
+    courseContent:
+        $ref: './CourseContent.yml'

@@ -3,9 +3,12 @@ Recommendation:
   properties:
     id:
       $ref: './UUID.yml'
-    userId:
-      $ref: './UUID.yml'
-    courseId:
-      $ref: './UUID.yml'
-    reason:
+    user:
+      $ref: './User.yml'
+    course:
+        $ref: './Course.yml'
+    recommendedOn:
+      type: string
+      format: date-time
+    recommendationReason:
       type: string

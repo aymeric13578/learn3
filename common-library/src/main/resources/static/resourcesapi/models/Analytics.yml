@@ -1,0 +1,20 @@
+Analytics:
+  type: object
+  properties:
+    analyticsId:
+      type: string
+      format: uuid
+    activityType:
+      type: string
+    timestamp:
+      type: string
+      format: date-time
+    engagementScore:
+      type: number
+      format: double
+    deviceType:
+      type: string
+    user:
+      $ref: './User.yml'
+    course:
+      $ref: './Course.yml'

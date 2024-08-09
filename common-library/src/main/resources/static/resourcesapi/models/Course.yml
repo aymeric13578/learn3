@@ -7,7 +7,33 @@ Course:
       type: string
     description:
       type: string
+    price:
+      type: number
+      format: double
+    createdAt:
+        type: string
+        format: date-time
+    updatedAt:
+        type: string
+        format: date-time
+    popularityScore:
+        type: number
+        format: double
+    difficultyLevel:
+        type: string
+    instructor:
+        $ref: './User.yml'
+    category:
+        $ref: './Category.yml'
     modules:
-      type: array
-      items:
-        $ref: './Module.yml'
+        type: array
+        items:
+          $ref: './Module.yml'
+    courseContents:
+        type: array
+        items:
+          $ref: './CourseContent.yml'
+    courseMaterials:
+        type: array
+        items:
+          $ref: './CourseMaterial.yml'

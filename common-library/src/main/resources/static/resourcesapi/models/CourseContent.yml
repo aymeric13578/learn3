@@ -5,9 +5,13 @@ CourseContent:
       $ref: './UUID.yml'
     title:
       type: string
-    moduleId:
-      $ref: './UUID.yml'
-    materials:
-      type: array
-      items:
-        $ref: './CourseMaterial.yml'
+    contentType:
+      type: string
+    contentData:
+      type: string
+    course:
+      $ref: './Course.yml'
+    videos:
+        type: array
+        items:
+          $ref: './Video.yml'

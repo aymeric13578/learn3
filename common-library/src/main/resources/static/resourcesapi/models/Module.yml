@@ -6,8 +6,8 @@ Module:
     title:
       type: string
     courseId:
-      $ref: './UUID.yml'
-    contents:
-      type: array
-      items:
-        $ref: './CourseContent.yml'
+      $ref: './Course.yml'
+    order:
+      type: integer
+    content:
+      type: string

@@ -1,43 +1,36 @@
-# User.yml
-
 User:
   type: object
   properties:
-    id:
+    userId:
       type: string
       format: uuid
-      description: Unique identifier for the user.
     username:
       type: string
-      description: The user's unique username.
-      example: johndoe
     email:
       type: string
       format: email
-      description: The user's email address.
-      example: johndoe@example.com
+    password:
+      type: string
     firstName:
       type: string
-      description: The user's first name.
-      example: John
     lastName:
       type: string
-      description: The user's last name.
-      example: Doe
-    roles:
-      type: array
-      items:
-        type: string
-      description: List of roles assigned to the user.
-      example: [admin, user]
     createdAt:
       type: string
       format: date-time
-      description: Timestamp when the user was created.
     updatedAt:
       type: string
       format: date-time
-      description: Timestamp when the user was last updated.
+    lastActive:
+      type: string
+      format: date-time
+    profileImageUrl:
+      type: string
+    roles:
+      type: array
+      items:
+        $ref: './Role.yml'
+
 
   required:
     - id

@@ -3,14 +3,18 @@ Payment:
   properties:
     id:
       $ref: './UUID.yml'
-    userId:
-      $ref: './UUID.yml'
+    user:
+      $ref: './User.yml'
+    course:
+        $ref: './Course.yml'
     amount:
       type: number
       format: float
     date:
       type: string
       format: date-time
+    transactionId:
+      type: string
     status:
       type: string
       enum:
