@@ -1,24 +1,34 @@
-
-### 10. **Recommendation Service Module**
-
-```markdown
-# Recommendation Service Module
+# Recommendation Microservice
 
 ## Overview
 
-The Recommendation Service Module provides personalized course recommendations using machine learning algorithms.
+The Recommendation Microservice is designed to provide personalized course recommendations using two main algorithms:
 
-## Features
+1. **Collaborative Filtering**: Recommends courses based on the behavior of similar users.
+2. **Content-Based Filtering**: Recommends courses based on user preferences and course content.
 
-- **Machine Learning Algorithms**: Advanced ML algorithms for personalized recommendations.
-- **Collaborative Filtering**: Suggest courses based on user behavior.
-- **Content-Based Filtering**: Recommend courses based on content and user preferences.
+This service is built using Spring Boot and interacts with MongoDB for data storage.
 
-## Usage
+## Project Structure
 
-1. **Add Dependency**: Add the `recommendation-service` module dependency to your microservices.
+The project is organized into the following packages:
 
-2. **Configure ML Algorithms**: Set up and train ML models for recommendations.
+- `com.example.recommendation.controller`: Contains REST controllers.
+- `com.example.recommendation.service`: Contains business logic for recommendation algorithms.
+- `com.example.recommendation.repository`: Contains repositories for database interactions.
+- `com.example.recommendation.model`: Contains data models for `User` and `Course`.
+- `com.example.recommendation.config`: Contains configuration files.
 
-   ```properties
-   ml.model.path=/models/recommendation
+## Setup Instructions
+
+### Prerequisites
+
+- Java 11 or higher
+- Maven
+- MongoDB
+
+### Clone the Repository
+
+```bash
+git clone https://github.com/your-repo/recommendation-microservice.git
+cd recommendation-microservice

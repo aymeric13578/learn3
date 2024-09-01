@@ -1,0 +1,9 @@
+
+Z
+java:S1854"8Remove this useless assignment to local variable "user".(ºÄë°úÿÿÿÿ8Ô“¯è“2
+K
+java:S1481")Remove this unused "user" local variable.(ºÄë°úÿÿÿÿ8Ö“¯è“2
+o
+java:S62042"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(ª™¨¹8Ý“¯è“2
+V
+java:S1068"4Remove this unused "courseRepository" private field.(ÔÐñ›ýÿÿÿÿ8ä“¯è“2

@@ -1,15 +1,0 @@
-
-G
-java:S1068"*Remove this unused "rating" private field.(™¾Ôü8¿ÔÊš’2
-M
-java:S1068"+Remove this unused "comment" private field.(øÛ¼ùÿÿÿÿ8¿ÔÊš’2
-O
-java:S1068"-Remove this unused "createdAt" private field.(¯‰‡ƒıÿÿÿÿ8ÀÔÊš’2
-I
-java:S1068"-Remove this unused "updatedAt" private field.(•ÊˆR8ÀÔÊš’2
-O
-java:S1068"-Remove this unused "sentiment" private field.( ±Ññüÿÿÿÿ8É’îï‘2
-G
-java:S1068 "*Remove this unused "isSpam" private field.(÷µµÀ8æáÏÁ‘2
-P
-java:S1068!".Remove this unused "isApproved" private field.(Îş¸œÿÿÿÿÿ8çáÏÁ‘2

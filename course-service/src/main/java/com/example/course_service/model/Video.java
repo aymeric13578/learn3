@@ -1,14 +1,15 @@
 package com.example.course_service.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
+@Table(name = "videos")
+@NoArgsConstructor
+@AllArgsConstructor
 @Setter
 @Getter
 @ToString
@@ -23,4 +24,7 @@ public class Video {
 
     private String videoUrl;
     private int duration;
+
+    private LocalDateTime lastWatched;
+    private Integer watchedDuration;
 }

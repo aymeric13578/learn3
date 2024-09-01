@@ -2,14 +2,16 @@ package com.example.review_service.entity;
 
 import com.example.course_service.model.Course;
 import com.example.user_service.model.User;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 import java.util.UUID;
 
 @Entity
+@Table(name = "feedback")
+@NoArgsConstructor
+@AllArgsConstructor
 public class Feedback {
     @Id
     private UUID feedbackId;
@@ -24,4 +26,6 @@ public class Feedback {
 
     private String feedbackType;
     private String feedbackData;
+
+    private Boolean resolved;
 }

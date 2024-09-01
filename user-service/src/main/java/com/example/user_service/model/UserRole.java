@@ -1,13 +1,15 @@
 package com.example.user_service.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 import java.util.UUID;
 
 @Entity
+@Table(name = "user_role")
+@NoArgsConstructor
+@AllArgsConstructor
 public class UserRole {
     @Id
     private UUID userRoleId;

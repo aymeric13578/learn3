@@ -19,7 +19,6 @@
         <module>common-library</module>
         <module>config-server</module>
         <module>service-registry</module>
-        <module>message-broker</module>
         <module>user-service</module>
         <module>course-service</module>
         <module>enrollment-service</module>
@@ -32,6 +31,7 @@
         <module>notification-service</module>
         <module>activity-service</module>
         <module>security-service</module>
+        <module>video-service</module>
     </modules>
 
     <properties>

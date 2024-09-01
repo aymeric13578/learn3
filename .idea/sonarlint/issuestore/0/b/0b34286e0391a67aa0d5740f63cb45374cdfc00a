@@ -1,0 +1,8 @@
+
+_
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8‹¤ˆ¸“2
+L	java:S106$"+Replace this use of System.err by a logger.(òÖ äıÿÿÿÿ8¤ˆ¸“2
+o
+java:S6204v"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(ª™¨¹8˜¤ˆ¸“2
+P
+java:S1172".Remove this unused method parameter "videoId".(ƒºªŠùÿÿÿÿ8›¤ˆ¸“2
